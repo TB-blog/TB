@@ -1,8 +1,8 @@
 import axios from 'axios'
+import _config from '../../config.js'
 
 axios.defaults.timeout = 3000 // 响应时间
 axios.defaults.headers['Content-Type'] = 'application/json' // 通信格式
-// axios.defaults.baseURL = '' // 生产环境接口地址
 
 function findMaxPage(curPage, linkStr) {
   const arr = linkStr.split('page=').filter(el => {
@@ -22,7 +22,7 @@ export function fetchIssues(page, size) {
       method: 'get',
       url: 'https://api.github.com/repos/HuangXiZhou/blog/issues',
       params: {
-        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
+        access_token: _config.token,
         sort: 'created',
         page: Number(page),
         per_page: Number(size)
@@ -46,7 +46,7 @@ export function fetchUser() {
       method: 'get',
       url: 'https://api.github.com/users/HuangXiZhou',
       params: {
-        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
+        access_token: _config.token,
       }
     }).then(data => {
       resolve(data.data)
@@ -62,7 +62,7 @@ export function fetchRepos() {
       method: 'get',
       url: 'https://api.github.com/users/HuangXiZhou/repos',
       params: {
-        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
+        access_token: _config.token,
         sort: 'created',
         direction: 'desc'
       }
@@ -80,7 +80,7 @@ export function fetchSingleIssue(number) {
       method: 'get',
       url: `https://api.github.com/repos/HuangXiZhou/blog/issues/${number}`,
       params: {
-        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7'
+        access_token: _config.token
       }
     }).then(data => {
       resolve(data.data)
