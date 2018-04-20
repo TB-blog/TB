@@ -22,7 +22,7 @@ export function fetchIssues(page, size) {
       method: 'get',
       url: 'https://api.github.com/repos/HuangXiZhou/blog/issues',
       params: {
-        access_token: '21e7a0eec119e72de965214bb101538dfeca3fcd',
+        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
         sort: 'created',
         page: Number(page),
         per_page: Number(size)
@@ -46,7 +46,7 @@ export function fetchUser() {
       method: 'get',
       url: 'https://api.github.com/users/HuangXiZhou',
       params: {
-        access_token: '21e7a0eec119e72de965214bb101538dfeca3fcd',
+        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
       }
     }).then(data => {
       resolve(data.data)
@@ -62,7 +62,7 @@ export function fetchRepos() {
       method: 'get',
       url: 'https://api.github.com/users/HuangXiZhou/repos',
       params: {
-        access_token: '21e7a0eec119e72de965214bb101538dfeca3fcd',
+        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7',
         sort: 'created',
         direction: 'desc'
       }
@@ -80,7 +80,7 @@ export function fetchSingleIssue(number) {
       method: 'get',
       url: `https://api.github.com/repos/HuangXiZhou/blog/issues/${number}`,
       params: {
-        access_token: '21e7a0eec119e72de965214bb101538dfeca3fcd'
+        access_token: '259f3e148313ccb8f0507b349c26fa7292c5ccd7'
       }
     }).then(data => {
       resolve(data.data)
