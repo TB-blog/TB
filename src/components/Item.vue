@@ -1,6 +1,5 @@
 <template>
-  <li class="news-item">
-    <span v-if="type === 'blog'" class="score">23</span>
+  <li class="news-item" :class="{ 'list-item-left': type === 'blog' }">
     <span class="score">{{ item.stargazers_count }}</span>
     <span class="title">
       <template v-if="type === 'blog'">
@@ -74,6 +73,9 @@ export default {
       text-decoration underline
       &:hover
         color #ff6600
+
+.list-item-left
+  padding-left 28px
 
 .repo-forked-icon
   vertical-align middle
