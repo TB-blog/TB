@@ -2,7 +2,7 @@
   <div id="app">
     <header class="header">
       <nav class="inner">
-        <div class="navBar" :class="{ 'is-hidden-nav': showMotto }">
+        <div class="navBar">
           <router-link to="/" exact>
             <img class="logo" src="~public/logo-48.png" alt="logo">
           </router-link>
@@ -10,11 +10,11 @@
           <router-link to="/repo">Repo</router-link>
           <a href="https://github.com/HuangXiZhou" target="_blank">Github</a>
         </div>
-        <div class="navBar" :class="{ 'is-hidden-motto': showMotto }">
+        <!--<div class="navBar" :class="{ 'is-hidden-motto': showMotto }">
           <h4 class="motto">
             万里不惜死，朝得成功
           </h4>
-        </div>
+        </div>-->
       </nav>
     </header>
     <transition name="fade" mode="out-in">
@@ -29,37 +29,37 @@ export default {
 
   data: () => ({
     loading: true,
-    showMotto: false
+    // showMotto: false
   }),
 
-  mounted () {
-    let scrollAction = {
-      y: null
-    }
-    let scrollDirection = null
+  // mounted () {
+  //   let scrollAction = {
+  //     y: null
+  //   }
+  //   let scrollDirection = null
 
-    function scrollFunc() {
-        if (typeof scrollAction.y === null) {
-            scrollAction.y = window.pageYOffset;
-        }
-        var diff = scrollAction.y - window.pageYOffset;
-        if (diff < 0) {
-          scrollDirection = 'down'
-        } else if (diff > 0) {
-          scrollDirection = 'up'
-        } else {
-          // First scroll event
-        }
-        scrollAction.y = window.pageYOffset;
-    }
+  //   function scrollFunc() {
+  //       if (typeof scrollAction.y === null) {
+  //           scrollAction.y = window.pageYOffset;
+  //       }
+  //       var diff = scrollAction.y - window.pageYOffset;
+  //       if (diff < 0) {
+  //         scrollDirection = 'down'
+  //       } else if (diff > 0) {
+  //         scrollDirection = 'up'
+  //       } else {
+  //         // First scroll event
+  //       }
+  //       scrollAction.y = window.pageYOffset;
+  //   }
 
-    window.onscroll = e => {
-      scrollFunc()
-      this.showMotto = scrollDirection === 'down'
-        ? true
-        : false
-    }
-  }
+  //   window.onscroll = e => {
+  //     scrollFunc()
+  //     this.showMotto = scrollDirection === 'down'
+  //       ? true
+  //       : false
+  //   }
+  // }
 }
 </script>
 
@@ -109,7 +109,7 @@ a
       margin-right 0
 
 .logo
-  width 24px
+  height 24px
   margin-right 10px
   display inline-block
   vertical-align middle

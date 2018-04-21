@@ -13,9 +13,7 @@
         </p>
       </div>
       <div class="item-view-comments">
-        <div class="content" v-html="htmlResource" v-highlight>
-
-        </div>
+        <div class="content" v-html="htmlResource" v-highlight></div>
       </div>
     </template>
   </div>
@@ -56,7 +54,6 @@ export default {
           return String(el.number) === this.$route.params.id
         })[0]
       }
-      // console.log(a)
       return this.$store.state.singleIssue
     }
   },
