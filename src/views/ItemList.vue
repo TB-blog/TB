@@ -1,5 +1,14 @@
 <template>
   <div class="list-view" :class="{ 'repos-view': type === 'repo' }">
+    <section class="description">
+      <p>A man who loves the world.</p>
+      <p style="display: inline">
+        Find me on
+        <a class="icon" target="_blank" href="https://github.com/HuangXiZhou" title="github"><i class="fa fa-github"></i></a>,
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/huangxizhou" title="linkedin"><i class="fa fa-linkedin"></i></a> and
+        <a class="icon" target="_blank" href="https://steamcommunity.com/profiles/76561198360491627" title="steam"><i class="fa fa-steam"></i></a>
+      </p>
+    </section>
     <div v-show="type === 'blog'" class="list-nav">
       <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">PREV</router-link>
       <a v-else class="disabled">PREV</a>
@@ -88,32 +97,39 @@ export default {
 </script>
 
 <style lang="stylus">
-.list-view
-  padding-top 45px
-
 .repos-view
   padding-top 4px
 
 .list-nav, .list
-  background-color #fff
   border-radius 2px
+
+.description
+  padding 15px 30px
+  // position absolute
+  text-align left
+  // top 0
+  // left 0
+  // right 0
+  a:hover
+    color #d480aa
 
 .list-nav
   padding 15px 30px
-  position fixed
-  text-align center
-  top 55px
-  left 0
-  right 0
-  z-index 998
-  box-shadow 0 1px 2px rgba(0,0,0,.1)
+  // position absolute
+  text-align left
+  // top 60px
+  // left 0
+  // right 0
   a
+    color #3eaf7c
+    // margin 0 1em
+  span
     margin 0 1em
   .disabled
-    color #ccc
+    color #444
 
 .list
-  position absolute
+  // position absolute
   margin 30px 0
   width 100%
   transition all .5s cubic-bezier(.55,0,.1,1)

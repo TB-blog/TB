@@ -2,9 +2,7 @@
   <div class="item-view" v-if="item">
     <template v-if="item">
       <div class="item-view-header">
-        <a>
-          <h1>{{ item.title }}</h1>
-        </a><br>
+        <h1>{{ item.title }}</h1>
         <span v-if="item.labels" class="labels" v-for="label in item.labels" :key="label.id">
           #{{ label.name }}
         </span>
@@ -22,11 +20,9 @@
 <script>
 import hljs from 'highlightjs'
 import marked from 'marked'
-import Spinner from '../components/Spinner.vue'
 
 export default {
   name: 'item-view',
-  components: { Spinner },
 
   data: () => ({
     loading: true

@@ -64,27 +64,27 @@ export default {
 </script>
 
 <style lang="stylus">
+html
+  border-top 2px solid #c9cacc
+
 body
-  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size 15px
-  background-color lighten(#eceef1, 30%)
+  font-family "Menlo", "Meslo LG", monospace
+  font-size 14px
+  font-weight 400
+  // background-color lighten(#eceef1, 30%)
   margin 0
-  padding-top 55px
-  color #2c3e50
+  // color #2c3e50
   overflow-y scroll
+  color #c9cacc
+  background-color #1d1f21
 
 a
-  color #2c3e50
+  color #c9cacc
   text-decoration none
 
 .header
-  background-color #3eaf7c
-  position fixed
-  z-index 999
+  background-color #1d1f21
   height 55px
-  top 0
-  left 0
-  right 0
   overflow hidden
   .inner
     max-width 800px
@@ -92,7 +92,7 @@ a
     margin 0px auto
     padding 15px 5px
   a
-    color rgba(255, 255, 255, .8)
+    color #d480aa
     line-height 24px
     transition color .15s ease
     display inline-block
