@@ -1,6 +1,6 @@
 <template>
-  <div class="news-view" :class="{ 'repos-view': type === 'repo' }">
-    <div v-show="type === 'blog'" class="news-list-nav">
+  <div class="list-view" :class="{ 'repos-view': type === 'repo' }">
+    <div v-show="type === 'blog'" class="list-nav">
       <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">PREV</router-link>
       <a v-else class="disabled">PREV</a>
       <span>{{ page }}/{{ maxPage }}</span>
@@ -8,7 +8,7 @@
       <a v-else class="disabled">NEXT</a>
     </div>
     <transition :name="transition">
-      <div class="news-list" :key="displayedPage" v-if="displayedPage > 0">
+      <div class="list" :key="displayedPage" v-if="displayedPage > 0">
         <transition-group tag="ul" name="item">
           <item v-for="item in displayedItems" :key="item.id" :item="item" :type="type">
           </item>
@@ -22,7 +22,7 @@
 import Item from '../components/Item.vue'
 
 export default {
-  name: 'item-list',
+  name: 'list',
 
   components: {
     Item
@@ -88,17 +88,17 @@ export default {
 </script>
 
 <style lang="stylus">
-.news-view
+.list-view
   padding-top 45px
 
 .repos-view
   padding-top 4px
 
-.news-list-nav, .news-list
+.list-nav, .list
   background-color #fff
   border-radius 2px
 
-.news-list-nav
+.list-nav
   padding 15px 30px
   position fixed
   text-align center
@@ -112,7 +112,7 @@ export default {
   .disabled
     color #ccc
 
-.news-list
+.list
   position absolute
   margin 30px 0
   width 100%
@@ -143,6 +143,6 @@ export default {
   transform translate(30px, 0)
 
 @media (max-width 600px)
-  .news-list
+  .list
     margin 10px 0
 </style>
