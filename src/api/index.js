@@ -1,4 +1,5 @@
 import axios from 'axios'
+import md5 from 'md5'
 import _config from '../../config.js'
 import config from './config-server.js'
 
@@ -18,7 +19,7 @@ function findMaxPage(curPage, linkStr) {
 }
 
 export function fetchIssues(page, size) {
-  const key = 'issues'
+  const key = md5('issues' + page)
 
   return new Promise((resolve,reject) => {
     if (config.cached && config.cached.has(key)) {
@@ -101,7 +102,7 @@ export function fetchRepos() {
 }
 
 export function fetchSingleIssue(number) {
-  const key = 'singleissue'
+  const key = md5('singleissue' + number)
   return new Promise((resolve,reject) => {
     if (config.cached && config.cached.has(key)) {
       resolve(config.cached.get(key))

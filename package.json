@@ -24,6 +24,7 @@
     "highlightjs": "^9.10.0",
     "lru-cache": "^4.1.2",
     "marked": "^0.3.19",
+    "md5": "^2.2.1",
     "route-cache": "0.4.3",
     "serve-favicon": "^2.4.5",
     "timeago.js": "^3.0.2",
