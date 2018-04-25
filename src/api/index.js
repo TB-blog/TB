@@ -39,7 +39,7 @@ export function fetchIssues(page, size) {
         content: data.data,
         maxPage: findMaxPage(page, data.headers.link)
       }
-      if (config.cached && data.cache) {
+      if (config.cached) {
         config.cached.set(key, rows)
       }
       resolve(rows)
@@ -64,7 +64,7 @@ export function fetchUser() {
         access_token: _config.token,
       }
     }).then(data => {
-      if (config.cached && data.cache) {
+      if (config.cached) {
         config.cached.set(key, data.data)
       }
       resolve(data.data)
@@ -90,7 +90,7 @@ export function fetchRepos() {
         direction: 'desc'
       }
     }).then(data => {
-      if (config.cached && data.cache) {
+      if (config.cached) {
         config.cached.set(key, data.data)
       }
       resolve(data.data)
@@ -114,7 +114,7 @@ export function fetchSingleIssue(number) {
         access_token: _config.token
       }
     }).then(data => {
-      if (config.cached && data.cache) {
+      if (config.cached) {
         config.cached.set(key, data.data)
       }
       resolve(data.data)
