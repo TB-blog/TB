@@ -74,6 +74,7 @@ module.exports = {
     ? [
         new VueLoaderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
+          comments: false,
           compress: { warnings: false }
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),

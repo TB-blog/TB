@@ -21,7 +21,7 @@
 import 'viewerjs/dist/viewer.min.css'
 import 'highlightjs/styles/agate.css'
 import Viewer from 'viewerjs'
-import hljs from 'highlightjs'
+import hljs from 'highlightjs/highlight.pack.min.js'
 import marked from 'marked'
 
 export default {
