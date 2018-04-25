@@ -1,12 +1,12 @@
 <template>
-  <li class="news-item" :class="{ 'list-item-left': type === 'blog' }">
+  <li class="blogs-item" :class="{ 'list-item-left': type === 'blog' }">
     <span class="score">{{ item.stargazers_count }}</span>
     <span class="title">
       <template v-if="type === 'blog'">
         <a rel="noopener">{{ item.title }}</a>
       </template>
       <template v-else>
-        <a :href="'https://github.com/HuangXiZhou/' + item.name" target="_blank">
+        <a :href="'https://github.com/HuangXiZhou/' + item.name" target="_blank" rel="noopener">
           {{ item.name }}
         </a>
       </template>
@@ -17,7 +17,7 @@
         <span class="time">
           {{ item.created_at | timeAgo }}
         </span>
-        <span class="comments-link">
+        <span>
           | <router-link :to="'/item/' + item.number">{{ item.descendants }} Read more</router-link>
         </span>
       </template>
@@ -37,13 +37,13 @@
 import { timeAgo } from '../util/filters'
 
 export default {
-  name: 'news-item',
+  name: 'blogs-item',
   props: ['item', 'type']
 }
 </script>
 
 <style lang="stylus">
-.news-item
+.blogs-item
   padding 20px 30px 20px 80px
   position relative
   line-height 20px

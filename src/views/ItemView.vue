@@ -18,6 +18,9 @@
 </template>
 
 <script>
+import 'viewerjs/dist/viewer.min.css'
+import 'highlightjs/styles/agate.css'
+import Viewer from 'viewerjs'
 import hljs from 'highlightjs'
 import marked from 'marked'
 
@@ -25,7 +28,15 @@ export default {
   name: 'item-view',
 
   data: () => ({
-    loading: true
+    loading: true,
+    viewerOptions: {
+      toolbar: false,
+      tooltip: false,
+      movable: false,
+      rotatable: false,
+      zoomable: false,
+      keyboard: false
+    }
   }),
 
   directives: {
@@ -64,6 +75,9 @@ export default {
 
   mounted () {
     hljs.initHighlightingOnLoad()
+    Viewer.setDefaults(this.viewerOptions)
+
+    var viewer = new Viewer(document.querySelectorAll('.content')[0]);
   }
 }
 </script>

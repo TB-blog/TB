@@ -1,12 +1,16 @@
+<style lang="stylus">
+@import './ItemList.styl'
+</style>
+
 <template>
   <div class="list-view" :class="{ 'repos-view': type === 'repo' }">
     <section class="description">
       <p>A man who loves the world.</p>
       <p style="display: inline">
         Find me on
-        <a class="icon" target="_blank" href="https://github.com/HuangXiZhou" title="github"><i class="fa fa-github"></i></a>,
-        <a class="icon" target="_blank" href="https://www.linkedin.com/in/huangxizhou" title="linkedin"><i class="fa fa-linkedin"></i></a> and
-        <a class="icon" target="_blank" href="https://steamcommunity.com/profiles/76561198360491627" title="steam"><i class="fa fa-steam"></i></a>
+        <a class="icon" target="_blank" href="https://github.com/HuangXiZhou" title="github" rel="noopener"><i class="fa fa-github"></i></a>,
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/huangxizhou" title="linkedin" rel="noopener"><i class="fa fa-linkedin"></i></a> and
+        <a class="icon" target="_blank" href="https://steamcommunity.com/profiles/76561198360491627" title="steam" rel="noopener"><i class="fa fa-steam"></i></a>
       </p>
     </section>
     <div v-show="type === 'blog'" class="list-nav">
@@ -95,70 +99,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-.repos-view
-  padding-top 4px
-
-.list-nav, .list
-  border-radius 2px
-
-.description
-  padding 15px 30px
-  // position absolute
-  text-align left
-  // top 0
-  // left 0
-  // right 0
-  a:hover
-    color #d480aa
-
-.list-nav
-  padding 15px 30px
-  // position absolute
-  text-align left
-  // top 60px
-  // left 0
-  // right 0
-  a
-    color #3eaf7c
-    // margin 0 1em
-  span
-    margin 0 1em
-  .disabled
-    color #444
-
-.list
-  // position absolute
-  margin 30px 0
-  width 100%
-  transition all .5s cubic-bezier(.55,0,.1,1)
-  ul
-    list-style-type none
-    padding 0
-    margin 0
-
-.slide-left-enter, .slide-right-leave-to
-  opacity 0
-  transform translate(30px, 0)
-
-.slide-left-leave-to, .slide-right-enter
-  opacity 0
-  transform translate(-30px, 0)
-
-.item-move, .item-enter-active, .item-leave-active
-  transition all .5s cubic-bezier(.55,0,.1,1)
-
-.item-enter
-  opacity 0
-  transform translate(30px, 0)
-
-.item-leave-active
-  position absolute
-  opacity 0
-  transform translate(30px, 0)
-
-@media (max-width 600px)
-  .list
-    margin 10px 0
-</style>

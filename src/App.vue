@@ -8,7 +8,7 @@
           </router-link>
           <router-link to="/blog">Blog</router-link>
           <router-link to="/repo">Repo</router-link>
-          <a href="https://github.com/HuangXiZhou" target="_blank">Github</a>
+          <a href="https://github.com/HuangXiZhou" target="_blank" rel="noopener">Github</a>
         </div>
         <!--<div class="navBar" :class="{ 'is-hidden-motto': showMotto }">
           <h4 class="motto">
