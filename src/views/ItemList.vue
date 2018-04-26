@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Item from '../components/Item.vue'
+import Item from '../components/Item.vue';
 
 export default {
   name: 'list',
@@ -50,52 +50,52 @@ export default {
       transition: 'slide-right',
       displayedPage: Number(this.$route.params.page) || 1,
       displayedItems: this.type === 'blog' ? this.$store.getters.issues : this.$store.getters.repos
-    }
+    };
   },
 
   computed: {
     page () {
-      return Number(this.$route.params.page) || 1
+      return Number(this.$route.params.page) || 1;
     },
     maxPage () {
-      return this.$store.state.maxPage
+      return this.$store.state.maxPage;
     },
     hasMore () {
-      return this.page < this.maxPage
+      return this.page < this.maxPage;
     }
   },
 
   beforeMount () {
     if (this.$root._isMounted && this.type === 'blog') {
-      this.loadItems(this.page)
+      this.loadItems(this.page);
     }
   },
 
   watch: {
     page (to, from) {
-      this.loadItems(to, from)
+      this.loadItems(to, from);
     }
   },
 
   methods: {
     loadItems (to = this.page, from = -1) {
-      this.$bar.start()
+      this.$bar.start();
       this.$store.dispatch('FETCH_ISSUES', {
         page: this.page,
         size: 10
       }).then(() => {
         if (this.page < 0 || this.page > this.maxPage) {
-          this.$router.replace(`/${this.type}/1`)
-          return
+          this.$router.replace(`/${this.type}/1`);
+          return;
         }
         this.transition = from === -1
           ? null
-          : to > from ? 'slide-left' : 'slide-right'
-        this.displayedPage = to
-        this.displayedItems = this.$store.getters.issues
-        this.$bar.finish()
-      })
+          : to > from ? 'slide-left' : 'slide-right';
+        this.displayedPage = to;
+        this.displayedItems = this.$store.getters.issues;
+        this.$bar.finish();
+      });
     }
   }
-}
+};
 </script>

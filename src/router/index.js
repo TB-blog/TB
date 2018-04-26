@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 
-const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
-const ItemView = () => import('../views/ItemView.vue')
-const ErrorView = () => import('../views/ErrorView.vue')
+const createListView = id => () => import('../views/CreateListView').then(m => m.default(id));
+const ItemView = () => import('../views/ItemView.vue');
+const ErrorView = () => import('../views/ErrorView.vue');
 
 export function createRouter () {
   return new Router({
@@ -19,5 +19,5 @@ export function createRouter () {
       { path: '/error/:code', component: ErrorView },
       { path: '/', redirect: '/blog' }
     ]
-  })
+  });
 }

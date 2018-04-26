@@ -7,7 +7,11 @@
           #{{ label.name }}
         </span>
         <p class="meta">
-          By Trevor | {{ item.created_at | timeAgo }}
+          Post By
+          <a :href="`https://github.com/${this.$_config.user}`" target="_blank" rel="noopener">
+            {{this.$_config.nickname}}
+          </a>
+          {{ item.created_at | timeAgo }}
         </p>
       </div>
       <div class="item-view-comments">
@@ -18,11 +22,11 @@
 </template>
 
 <script>
-import 'viewerjs/dist/viewer.min.css'
-import 'highlightjs/styles/agate.css'
-import Viewer from 'viewerjs'
-import hljs from 'highlightjs/highlight.pack.min.js'
-import marked from 'marked'
+import 'viewerjs/dist/viewer.min.css';
+import 'highlightjs/styles/agate.css';
+import Viewer from 'viewerjs';
+import hljs from 'highlightjs/highlight.pack.min.js';
+import marked from 'marked';
 
 export default {
   name: 'item-view',
@@ -34,7 +38,6 @@ export default {
       tooltip: false,
       movable: false,
       rotatable: false,
-      zoomable: false,
       keyboard: false
     }
   }),
@@ -42,44 +45,43 @@ export default {
   directives: {
     highlight: {
       inserted: el => {
-        let blocks = el.querySelectorAll('pre code')
+        let blocks = el.querySelectorAll('pre code');
         blocks.forEach(block => {
-          hljs.highlightBlock(block)
-        })
+          hljs.highlightBlock(block);
+        });
       }
     }
   },
 
   computed: {
     htmlResource () {
-      return marked(this.item.body)
+      return marked(this.item.body);
     },
 
     item () {
       if (this.$store.state.issues.length) {
         return this.$store.state.issues.filter(el => {
-          return String(el.number) === this.$route.params.id
-        })[0]
+          return String(el.number) === this.$route.params.id;
+        })[0];
       }
-      return this.$store.state.singleIssue
+      return this.$store.state.singleIssue;
     }
   },
 
-  asyncData ({ store, route: { params: { id }}}) {
-    return store.dispatch('FETCH_SINGLEISSUE', { number: [id] })
+  asyncData ({ store, route: { params: { id } } }) {
+    return store.dispatch('FETCH_SINGLEISSUE', { number: [id] });
   },
 
   title () {
-    return this.item.title
+    return this.item.title;
   },
 
   mounted () {
-    hljs.initHighlightingOnLoad()
-    Viewer.setDefaults(this.viewerOptions)
-
-    var viewer = new Viewer(document.querySelectorAll('.content')[0]);
+    hljs.initHighlightingOnLoad();
+    Viewer.setDefaults(this.viewerOptions);
+    new Viewer(document.querySelectorAll('.content')[0]);
   }
-}
+};
 </script>
 
 <style lang="stylus">

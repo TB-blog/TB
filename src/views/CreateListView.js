@@ -1,6 +1,6 @@
-import ItemList from './ItemList.vue'
+import ItemList from './ItemList.vue';
 
-const camelize = str => str.charAt(0).toUpperCase() + str.slice(1)
+const camelize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 export default function createListView (type) {
   return {
@@ -12,21 +12,20 @@ export default function createListView (type) {
           return store.dispatch('FETCH_ISSUES', {
             page: route.fullPath.split('/')[2] || 1,
             size: 10
-          })
-          break
+          });
 
         case 'repo':
-          return store.dispatch('FETCH_REPOS')
-          break
+          return store.dispatch('FETCH_REPOS');
+
         default:
-          break
+          break;
       }
     },
 
     title: camelize(type),
 
     render (h) {
-      return h(ItemList, { props: { type }})
+      return h(ItemList, { props: { type } });
     }
-  }
+  };
 }

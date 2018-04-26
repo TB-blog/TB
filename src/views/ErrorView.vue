@@ -22,13 +22,13 @@ export default {
   title () {
     return this.code
       ? this.code + ' Not Found'
-      : '500' + ' Service Error'
+      : '500' + ' Service Error';
   },
 
   computed: {
     code () {
-      return this.$route.params.code
+      return this.$route.params.code;
     }
   }
-}
+};
 </script>

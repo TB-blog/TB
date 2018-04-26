@@ -15,7 +15,7 @@
     <span class="meta">
       <template v-if="type === 'blog'">
         <span class="time">
-          {{ item.created_at | timeAgo }}
+          {{ item.created_at | timeFormat }}
         </span>
         <span>
           | <router-link :to="'/item/' + item.number">{{ item.descendants }} Read more</router-link>
@@ -34,12 +34,10 @@
 </template>
 
 <script>
-import { timeAgo } from '../util/filters'
-
 export default {
   name: 'blogs-item',
   props: ['item', 'type']
-}
+};
 </script>
 
 <style lang="stylus">

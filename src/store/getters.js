@@ -1,9 +1,9 @@
 export default {
   issues (state) {
-    return state.issues
+    return state.issues;
   },
 
   repos (state) {
-    return state.repos
-  },
-}
+    return state.repos;
+  }
+};

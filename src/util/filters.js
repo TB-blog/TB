@@ -1,6 +1,9 @@
-import timeago from 'timeago.js'
+import { format, distanceInWords } from 'date-fns';
+
+export function timeFormat (time) {
+  return format(time, 'YYYY-MM-DD');
+}
 
 export function timeAgo (time) {
-  const timeagoInstance = timeago()
-  return timeagoInstance.format(time)
+  return distanceInWords(new Date(), time) + ' ago';
 }

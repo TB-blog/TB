@@ -8,13 +8,8 @@
           </router-link>
           <router-link to="/blog">Blog</router-link>
           <router-link to="/repo">Repo</router-link>
-          <a href="https://github.com/HuangXiZhou" target="_blank" rel="noopener">Github</a>
+          <a :href="`https://github.com/${this.$_config.user}`" target="_blank" rel="noopener">Github</a>
         </div>
-        <!--<div class="navBar" :class="{ 'is-hidden-motto': showMotto }">
-          <h4 class="motto">
-            万里不惜死，朝得成功
-          </h4>
-        </div>-->
       </nav>
     </header>
     <transition name="fade" mode="out-in">
@@ -24,43 +19,14 @@
 </template>
 
 <script>
+
 export default {
   name: 'App',
 
   data: () => ({
-    loading: true,
-    // showMotto: false
-  }),
-
-  // mounted () {
-  //   let scrollAction = {
-  //     y: null
-  //   }
-  //   let scrollDirection = null
-
-  //   function scrollFunc() {
-  //       if (typeof scrollAction.y === null) {
-  //           scrollAction.y = window.pageYOffset;
-  //       }
-  //       var diff = scrollAction.y - window.pageYOffset;
-  //       if (diff < 0) {
-  //         scrollDirection = 'down'
-  //       } else if (diff > 0) {
-  //         scrollDirection = 'up'
-  //       } else {
-  //         // First scroll event
-  //       }
-  //       scrollAction.y = window.pageYOffset;
-  //   }
-
-  //   window.onscroll = e => {
-  //     scrollFunc()
-  //     this.showMotto = scrollDirection === 'down'
-  //       ? true
-  //       : false
-  //   }
-  // }
-}
+    loading: true
+  })
+};
 </script>
 
 <style lang="stylus">
@@ -71,9 +37,7 @@ body
   font-family "Menlo", "Meslo LG", monospace
   font-size 14px
   font-weight 400
-  // background-color lighten(#eceef1, 30%)
   margin 0
-  // color #2c3e50
   overflow-y scroll
   color #c9cacc
   background-color #1d1f21
@@ -81,9 +45,9 @@ body
 a
   color #c9cacc
   text-decoration none
+  transition color 0.15s ease
 
 .header
-  background-color #1d1f21
   height 55px
   overflow hidden
   .inner
@@ -94,7 +58,6 @@ a
   a
     color #d480aa
     line-height 24px
-    transition color .15s ease
     display inline-block
     vertical-align middle
     font-weight 300

@@ -1,9 +1,9 @@
-const LRU = require('lru-cache')
+const LRU = require('lru-cache');
 
-let api
+let api;
 
 if (process.__API__) {
-  api = process.__API__
+  api = process.__API__;
 } else {
   api = process.__API__ = {
     cached: LRU({
@@ -12,7 +12,7 @@ if (process.__API__) {
     }),
     onServer: true,
     cachedItem: {}
-  }
+  };
 }
 
-module.exports = api
+module.exports = api;
