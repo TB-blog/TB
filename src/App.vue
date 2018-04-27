@@ -1,3 +1,7 @@
+<style lang="stylus">
+@import './App.styl';
+</style>
+
 <template>
   <div id="app">
     <header class="header">
@@ -19,7 +23,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
 
@@ -28,92 +31,3 @@ export default {
   })
 };
 </script>
-
-<style lang="stylus">
-html
-  border-top 2px solid #c9cacc
-
-body
-  font-family "Menlo", "Meslo LG", monospace
-  font-size 14px
-  font-weight 400
-  margin 0
-  overflow-y scroll
-  color #c9cacc
-  background-color #1d1f21
-
-a
-  color #c9cacc
-  text-decoration none
-  transition color 0.15s ease
-
-.header
-  height 55px
-  overflow hidden
-  .inner
-    max-width 800px
-    box-sizing border-box
-    margin 0px auto
-    padding 15px 5px
-  a
-    color #d480aa
-    line-height 24px
-    display inline-block
-    vertical-align middle
-    font-weight 300
-    letter-spacing .075em
-    margin-right 1.8em
-    &:hover
-      color #fff
-    &.router-link-active
-      color #fff
-      font-weight 400
-    &:nth-child(6)
-      margin-right 0
-
-.logo
-  height 24px
-  margin-right 10px
-  display inline-block
-  vertical-align middle
-
-.view
-  max-width 800px
-  margin 0 auto
-  position relative
-
-.fade-enter-active, .fade-leave-active
-  transition all .2s ease
-
-.fade-enter, .fade-leave-active
-  opacity 0
-
-.navBar
-  transition transform .3s
-
-.motto
-  color #fff
-  font-weight 400
-
-.navBar-hidden
-  display none
-
-.is-hidden-nav
-  transform translateY(-200%)
-
-.is-hidden-motto
-  transform translateY(-225%)
-
-@media (max-width 860px)
-  .header .inner
-    padding 15px 30px
-
-@media (max-width 600px)
-  .header
-    .inner
-      padding 15px
-    a
-      margin-right 1em
-    .github
-      display none
-</style>

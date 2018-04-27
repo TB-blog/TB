@@ -1,3 +1,7 @@
+<style lang="stylus">
+@import './Item.styl';
+</style>
+
 <template>
   <li class="blogs-item" :class="{ 'list-item-left': type === 'blog' }">
     <span class="score">{{ item.stargazers_count }}</span>
@@ -39,35 +43,3 @@ export default {
   props: ['item', 'type']
 };
 </script>
-
-<style lang="stylus">
-.blogs-item
-  padding 20px 30px 20px 80px
-  position relative
-  line-height 20px
-  .score
-    color #ffca2b
-    font-size 1.1em
-    font-weight 700
-    position absolute
-    top 50%
-    left 0
-    width 80px
-    text-align center
-    margin-top -10px
-  .meta, .labels
-    font-size .85em
-    color #828282
-    a
-      color #828282
-      text-decoration underline
-      &:hover
-        color #d480aa
-
-.list-item-left
-  padding-left 28px
-
-.repo-forked-icon
-  vertical-align middle
-  padding-bottom .2em
-</style>

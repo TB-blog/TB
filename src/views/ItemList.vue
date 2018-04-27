@@ -1,16 +1,16 @@
 <style lang="stylus">
-@import './ItemList.styl'
+@import './ItemList.styl';
 </style>
 
 <template>
   <div class="list-view" :class="{ 'repos-view': type === 'repo' }">
     <section class="description">
-      <p>A man who loves the world.</p>
+      <p>{{ this.$_config.motto }}</p>
       <p style="display: inline">
         Find me on
-        <a class="icon" target="_blank" href="https://github.com/HuangXiZhou" title="github" rel="noopener"><i class="fa fa-github"></i></a>,
-        <a class="icon" target="_blank" href="https://www.linkedin.com/in/huangxizhou" title="linkedin" rel="noopener"><i class="fa fa-linkedin"></i></a> and
-        <a class="icon" target="_blank" href="https://steamcommunity.com/profiles/76561198360491627" title="steam" rel="noopener"><i class="fa fa-steam"></i></a>
+        <a target="_blank" :href="this.$_config.link.Github" title="github" rel="noopener"><i class="fa fa-github"></i></a>,
+        <a target="_blank" :href="this.$_config.link.Linkedin" title="linkedin" rel="noopener"><i class="fa fa-linkedin"></i></a> and
+        <a target="_blank" :href="this.$_config.link.Steam" title="steam" rel="noopener"><i class="fa fa-steam"></i></a>
       </p>
     </section>
     <div v-show="type === 'blog'" class="list-nav">

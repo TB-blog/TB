@@ -1,3 +1,7 @@
+<style lang="stylus">
+@import './ItemView.styl';
+</style>
+
 <template>
   <div class="item-view" v-if="item">
     <template v-if="item">
@@ -83,7 +87,3 @@ export default {
   }
 };
 </script>
-
-<style lang="stylus">
-  @import './ItemView.styl';
-</style>
