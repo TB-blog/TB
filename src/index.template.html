@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" sizes="120x120" href="/public/logo-120.png">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=2,minimum-scale=1">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="shortcut icon" sizes="48x48" href="/public/logo-48.png">
     <link rel="shortcut icon" href="~public/logo-48.png">
@@ -23,5 +23,12 @@
   <body>
   <div id="skip"><a href="#app">skip to content</a></div>
   <!--vue-ssr-outlet-->
+  <script>
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+      window.setTimeout(function () {
+        document.activeElement.scrollIntoViewIfNeeded();
+      }, 0);
+    }
+  </script>
   </body>
 </html>
