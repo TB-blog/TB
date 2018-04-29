@@ -42,6 +42,7 @@ export function fetchIssues (page, size) {
       params: {
         access_token: _config.token,
         sort: 'created',
+        state: 'open',
         page: Number(page),
         per_page: Number(size)
       }
