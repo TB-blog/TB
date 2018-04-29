@@ -32,7 +32,6 @@
 <script>
 import 'viewerjs/dist/viewer.min.css';
 import 'highlightjs/styles/agate.css';
-import 'gitalk/dist/gitalk.css';
 import Viewer from 'viewerjs';
 import hljs from 'highlightjs/highlight.pack.min.js';
 import marked from 'marked';

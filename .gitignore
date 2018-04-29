@@ -6,4 +6,5 @@ yarn-error.log
 .idea
 *.iml
 config.js
+config.prod.js
 yarn.lock
