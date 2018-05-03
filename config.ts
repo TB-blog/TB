@@ -1,5 +1,5 @@
 export default {
-  token: '816e8c904f23dee26ae9297d32cf3b8cb8911d7c',
+  token: 'd21c9005bae26b8621551bc2ae13c24897793a44',
   nickname: 'Trevor',
   user: 'HuangXiZhou',
   repo: 'blog',

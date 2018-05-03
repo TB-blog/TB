@@ -1,20 +1,20 @@
-import ItemList from './ItemList.vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
 import { State } from '../store/index';
+import ItemList from './ItemList.vue';
 
 const camelize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export default function createListView (type: string) {
+export default function createListView(type: string) {
   return {
     name: `${type}-view`,
 
-    asyncData ({ store, route }: { store: Store<State>, route: Route }) {
+    asyncData({ store, route }: { store: Store<State>, route: Route }) {
       switch (type) {
         case 'blog':
           return store.dispatch('FETCH_ISSUES', {
             page: route.fullPath.split('/')[2] || 1,
-            size: 10
+            size: 10,
           });
 
         case 'repo':
@@ -27,8 +27,8 @@ export default function createListView (type: string) {
 
     title: camelize(type),
 
-    render (h: any) {
+    render(h: any) {
       return h(ItemList, { props: { type } });
-    }
+    },
   };
 }

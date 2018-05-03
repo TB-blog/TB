@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "node server",
-    "lint": "eslint --ext .js --ext .vue src/ build/ server.js config.js",
-    "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/ server.js config.js",
+    "lint": "eslint --ext .js --ext .vue --ext src/ build/ server.js config.js",
+    "lint-fix": "eslint --fix --ext .js --ext .vue --ext src/ build/ server.js config.js && tslint --fix src/**/*.ts",
     "start": "cross-env NODE_ENV=production node server",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",

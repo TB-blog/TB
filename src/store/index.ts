@@ -1,33 +1,33 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import actions from './actions';
-import mutations from './mutations';
 import getters from './getters';
+import mutations from './mutations';
 
 import { Store } from 'vuex';
 
 Vue.use(Vuex);
 
-export function createStore (): Store<State> {
+export function createStore(): Store<State> {
   return new Vuex.Store({
     state: {
       issues: [],
       repos: [],
       singleIssue: [],
       maxPage: 0,
-      user: {}
+      user: {},
     },
     actions,
     mutations,
-    getters
+    getters,
   });
 }
 
 export interface State {
-  issues: Array<object>;
-  repos: Array<object>;
+  issues: object[];
+  repos: object[];
   singleIssue: object;
   maxPage: number;
   user: object;
   route?: any;
-};
+}

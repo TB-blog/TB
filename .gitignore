@@ -5,6 +5,6 @@ npm-debug.log
 yarn-error.log
 .idea
 *.iml
-config.js
+config.ts
 config.prod.js
 yarn.lock

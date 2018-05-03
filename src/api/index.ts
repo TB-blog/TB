@@ -1,24 +1,24 @@
 import axios from 'axios';
 import * as md5 from 'md5';
 import _config from '../../config';
-import * as api from './config-api-server';
+import api from './config-api-server';
 
 axios.defaults.timeout = 3000;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 const baseUrl = 'https://api.github.com';
 
-function findMaxPage (curPage: number, linkStr: string) {
+function findMaxPage(curPage: number, linkStr: string) {
   const arr = linkStr.split('page=').filter(el => {
     return el.match(/&per_/);
   });
-  if (curPage - Math.max(...arr.map(el => { return Number(el.replace(/&per_/, '')); })) === 1) {
+  if (curPage - Math.max(...arr.map(el => Number(el.replace(/&per_/, '')))) === 1) {
     return curPage;
   }
-  return Math.max(...arr.map(el => { return Number(el.replace(/&per_/, '')); }));
+  return Math.max(...arr.map(el => Number(el.replace(/&per_/, ''))));
 }
 
-function warmCache () {
+function warmCache() {
   fetchIssues(1, 10);
   fetchRepos();
   setTimeout(warmCache, 1000 * 60 * 15);
@@ -28,7 +28,7 @@ if ((api as any).onServer) {
   warmCache();
 }
 
-export function fetchIssues (page: number, size: number) {
+export function fetchIssues(page: number, size: number) {
   const key = md5(`issues-${page}`);
 
   return new Promise((resolve, reject) => {
@@ -43,13 +43,13 @@ export function fetchIssues (page: number, size: number) {
         access_token: _config.token,
         sort: 'created',
         state: 'open',
-        page: page,
-        per_page: size
-      }
+        page,
+        per_page: size,
+      },
     }).then(data => {
       const rows = {
         content: data.data,
-        maxPage: findMaxPage(page, data.headers.link)
+        maxPage: findMaxPage(page, data.headers.link),
       };
       if ((api as any).cached) {
         (api as any).cached.set(key, rows);
@@ -62,7 +62,7 @@ export function fetchIssues (page: number, size: number) {
   });
 }
 
-export function fetchUser () {
+export function fetchUser() {
   const key = 'user';
   return new Promise((resolve, reject) => {
     if ((api as any).cached && (api as any).cached.has(key)) {
@@ -73,8 +73,8 @@ export function fetchUser () {
       method: 'get',
       url: `${baseUrl}/users/${_config.user}`,
       params: {
-        access_token: _config.token
-      }
+        access_token: _config.token,
+      },
     }).then(data => {
       if ((api as any).cached) {
         (api as any).cached.set(key, data.data);
@@ -86,7 +86,7 @@ export function fetchUser () {
   });
 }
 
-export function fetchRepos () {
+export function fetchRepos() {
   const key = 'repos';
   return new Promise((resolve, reject) => {
     if ((api as any).cached && (api as any).cached.has(key)) {
@@ -99,8 +99,8 @@ export function fetchRepos () {
       params: {
         access_token: _config.token,
         sort: 'created',
-        direction: 'desc'
-      }
+        direction: 'desc',
+      },
     }).then(data => {
       if ((api as any).cached) {
         (api as any).cached.set(key, data.data);
@@ -112,8 +112,8 @@ export function fetchRepos () {
   });
 }
 
-export function fetchSingleIssue (number: number) {
-  const key = md5(`singleissue-${number}`);
+export function fetchSingleIssue(issueNumber: number) {
+  const key = md5(`singleissue-${issueNumber}`);
   return new Promise((resolve, reject) => {
     if ((api as any).cached && (api as any).cached.has(key)) {
       resolve((api as any).cached.get(key));
@@ -121,10 +121,10 @@ export function fetchSingleIssue (number: number) {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues/${number}`,
+      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues/${issueNumber}`,
       params: {
-        access_token: _config.token
-      }
+        access_token: _config.token,
+      },
     }).then(data => {
       if ((api as any).cached) {
         (api as any).cached.set(key, data.data);

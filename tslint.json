@@ -12,8 +12,17 @@
     "indent": [
       true
     ],
+    "no-console": [
+      false
+    ],
     "interface-name": [
       false
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
     ],
     "arrow-parens": false,
     "object-literal-sort-keys": false
