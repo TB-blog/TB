@@ -4,9 +4,11 @@ import actions from './actions';
 import mutations from './mutations';
 import getters from './getters';
 
+import { Store } from 'vuex';
+
 Vue.use(Vuex);
 
-export function createStore () {
+export function createStore (): Store<State> {
   return new Vuex.Store({
     state: {
       issues: [],
@@ -20,3 +22,12 @@ export function createStore () {
     getters
   });
 }
+
+export interface State {
+  issues: Array<object>;
+  repos: Array<object>;
+  singleIssue: object;
+  maxPage: number;
+  user: object;
+  route?: any;
+};

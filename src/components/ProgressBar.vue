@@ -11,7 +11,7 @@
   }"></div>
 </template>
 
-<script>
+<script lang='ts'>
 export default {
   data () {
     return {
@@ -41,7 +41,7 @@ export default {
       }, 100);
       return this;
     },
-    set (num) {
+    set (num: number) {
       this.show = true;
       this.canSuccess = true;
       this.percent = Math.floor(num);
@@ -50,11 +50,11 @@ export default {
     get () {
       return Math.floor(this.percent);
     },
-    increase (num) {
+    increase (num: number) {
       this.percent = this.percent + Math.floor(num);
       return this;
     },
-    decrease (num) {
+    decrease (num: number) {
       this.percent = this.percent - Math.floor(num);
       return this;
     },

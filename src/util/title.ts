@@ -1,4 +1,4 @@
-function getTitle (vm) {
+function getTitle (vm: any) {
   const { title } = vm.$options;
   if (title) {
     return typeof title === 'function'
@@ -11,7 +11,7 @@ const serverTitleMixin = {
   created () {
     const title = getTitle(this);
     if (title) {
-      this.$ssrContext.title = `Trevor Blog | ${title}`;
+      (this as any).$ssrContext.title = `Trevor Blog | ${title}`;
     }
   }
 };

@@ -2,9 +2,9 @@ import { createApp } from './app';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
-export default context => {
+export default (context: any) => {
   return new Promise((resolve, reject) => {
-    const s = isDev && Date.now();
+    const s: any = isDev && Date.now();
     const { app, router, store } = createApp();
 
     const { url } = context;
@@ -21,7 +21,7 @@ export default context => {
       if (!matchedComponents.length) {
         return reject({ code: 404 });
       }
-      Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
+      Promise.all(matchedComponents.map(({ asyncData }: any) => asyncData && asyncData({
         store,
         route: router.currentRoute
       }))).then(() => {

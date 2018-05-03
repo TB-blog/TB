@@ -31,12 +31,24 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import 'viewerjs/dist/viewer.min.css';
 import 'highlightjs/styles/agate.css';
-import Viewer from 'viewerjs';
-import hljs from 'highlightjs/highlight.pack.min.js';
-import marked from 'marked';
+// import * as Viewer from 'viewerjs';
+import * as hljs from 'highlight.js';
+import * as marked from 'marked';
+
+import { Store } from 'vuex';
+import { State } from '../store/index';
+
+interface AsyncData{
+  store: Store<State>;
+  route: {
+    params: {
+      id: number
+    }
+  };
+};
 
 export default {
   name: 'item-view',
@@ -55,9 +67,9 @@ export default {
 
   directives: {
     highlight: {
-      inserted: el => {
+      inserted: (el: any) => {
         let blocks = el.querySelectorAll('pre code');
-        blocks.forEach(block => {
+        blocks.forEach((block: any) => {
           hljs.highlightBlock(block);
         });
       }
@@ -75,7 +87,7 @@ export default {
 
     item () {
       if (this.$store.state.issues.length) {
-        return this.$store.state.issues.filter(el => {
+        return this.$store.state.issues.filter((el: any) => {
           return String(el.number) === this.$route.params.id;
         })[0];
       }
@@ -83,7 +95,7 @@ export default {
     }
   },
 
-  asyncData ({ store, route: { params: { id } } }) {
+  asyncData ({ store, route: { params: { id } } }: AsyncData) {
     return store.dispatch('FETCH_SINGLEISSUE', { number: [id] });
   },
 
@@ -92,10 +104,10 @@ export default {
   },
 
   methods: {
-    initViewer () {
-      Viewer.setDefaults(this.viewerOptions);
-      new Viewer(document.querySelectorAll('.content')[0]);
-    },
+    // initViewer () {
+    //   Viewer.setDefaults(this.viewerOptions);
+    //   new Viewer(document.querySelectorAll('.content')[0]);
+    // },
 
     initComments () {
       if (process.browser) {
@@ -119,7 +131,7 @@ export default {
 
   mounted () {
     hljs.initHighlightingOnLoad();
-    this.initViewer();
+    // this.initViewer();
     this.initComments();
   }
 };

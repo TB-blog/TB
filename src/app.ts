@@ -5,14 +5,14 @@ import { createRouter } from './router';
 import { sync } from 'vuex-router-sync';
 import titleMixin from './util/title';
 import * as filters from './util/filters';
-import _config from '../config.js';
+import _config from '../config';
 
 Vue.mixin(titleMixin);
 
-Vue.prototype.$_config = _config;
+(Vue.prototype as any).$_config = _config;
 
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key]);
+  Vue.filter(key, (filters as any)[key]);
 });
 
 export function createApp () {
@@ -22,10 +22,9 @@ export function createApp () {
   sync(store, router);
 
   const app = new Vue({
-    _config,
     router,
     store,
-    render: h => h(App)
+    render: (h: any) => h(App)
   });
 
   return { app, router, store };

@@ -3,15 +3,15 @@ import 'es6-promise/auto';
 import { createApp } from './app';
 import ProgressBar from './components/ProgressBar.vue';
 
-const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount();
+const bar: any = Vue.prototype.$bar = new Vue(ProgressBar).$mount();
 document.body.appendChild(bar.$el);
 
 Vue.mixin({
-  beforeRouteUpdate (to, from, next) {
-    const { asyncData } = this.$options;
+  beforeRouteUpdate (to: any, from: any, next: any) {
+    const { asyncData } = (this as any).$options;
     if (asyncData) {
       asyncData({
-        store: this.$store,
+        store: (this as any).$store,
         route: to
       }).then(next).catch(next);
     } else {
@@ -20,27 +20,27 @@ Vue.mixin({
   }
 });
 
-const { app, router, store } = createApp();
+const { app, router, store }: any = createApp();
 
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__);
 }
 
 router.onReady(() => {
-  router.beforeResolve((to, from, next) => {
+  router.beforeResolve((to: any, from: any, next: any) => {
     const matched = router.getMatchedComponents(to);
     const prevMatched = router.getMatchedComponents(from);
     let diffed = false;
-    const activated = matched.filter((c, i) => {
+    const activated = matched.filter((c: any, i: any) => {
       return diffed || (diffed = (prevMatched[i] !== c));
     });
-    const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _);
+    const asyncDataHooks = activated.map((c: any) => c.asyncData).filter((_: any) => _);
     if (!asyncDataHooks.length) {
       return next();
     }
 
     bar.start();
-    Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+    Promise.all(asyncDataHooks.map((hook: any) => hook({ store, route: to })))
       .then(() => {
         bar.finish();
         next();

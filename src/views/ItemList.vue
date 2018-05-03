@@ -31,7 +31,7 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Item from '../components/Item.vue';
 
 export default {
@@ -72,7 +72,7 @@ export default {
   },
 
   watch: {
-    page (to, from) {
+    page (to: number, from: number) {
       this.loadItems(to, from);
     }
   },

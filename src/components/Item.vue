@@ -37,7 +37,7 @@
   </li>
 </template>
 
-<script>
+<script lang='ts'>
 export default {
   name: 'blogs-item',
   props: ['item', 'type']

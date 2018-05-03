@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const vueConfig = require('./vue-loader.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -39,6 +39,14 @@ module.exports = {
         }
       },
       {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      },
+      {
         test: /\.css$/,
         loader: 'vue-style-loader!css-loader'
       },
@@ -72,13 +80,18 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
   performance: {
     maxEntrypointSize: 300000,
     hints: isProd ? 'warning' : false
   },
   plugins: isProd
     ? [
-      new VueLoaderPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
         compress: { warnings: false }
@@ -89,7 +102,6 @@ module.exports = {
       })
     ]
     : [
-      new VueLoaderPlugin(),
       new FriendlyErrorsPlugin()
     ]
 };

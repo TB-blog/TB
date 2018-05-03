@@ -8,7 +8,7 @@
       <nav class="inner">
         <div class="navBar">
           <router-link to="/" exact>
-            <img class="logo" src="~public/logo-48.png" alt="logo">
+            <img class="logo" src="../public/logo-48.png" alt="logo">
           </router-link>
           <router-link to="/blog">Blog</router-link>
           <router-link to="/repo">Repo</router-link>
@@ -21,13 +21,3 @@
     </transition>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'App',
-
-  data: () => ({
-    loading: true
-  })
-};
-</script>
