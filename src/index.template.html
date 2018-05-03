@@ -23,12 +23,5 @@
   <body>
   <div id="skip"><a href="#app">skip to content</a></div>
   <!--vue-ssr-outlet-->
-  <script>
-    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-      window.setTimeout(function () {
-        document.activeElement.scrollIntoViewIfNeeded();
-      }, 0);
-    }
-  </script>
   </body>
 </html>

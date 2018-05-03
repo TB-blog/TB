@@ -8,7 +8,9 @@
       <div class="item-view-header">
         <h1>{{ item.title }}</h1>
         <span v-if="item.labels" class="labels" v-for="label in item.labels" :key="label.id">
-          <a :href="issueLabelUrl + label.name">#{{ label.name }}</a>
+          <a :href="labelUrl + label.name"
+            target="_blank"
+            rel="noopener">#{{ label.name }}</a>
         </span>
         <p class="meta">
           Post By
@@ -35,7 +37,6 @@ import 'highlightjs/styles/agate.css';
 import Viewer from 'viewerjs';
 import hljs from 'highlightjs/highlight.pack.min.js';
 import marked from 'marked';
-import md5 from 'md5';
 
 export default {
   name: 'item-view',
@@ -49,8 +50,7 @@ export default {
       movable: false,
       rotatable: false,
       keyboard: false
-    },
-    issueLabelUrl: 'https://github.com/HuangXiZhou/blog/issues?q=is%3Aissue+is%3Aopen+label%3A'
+    }
   }),
 
   directives: {
@@ -65,6 +65,10 @@ export default {
   },
 
   computed: {
+    labelUrl () {
+      return `https://github.com/${this.$_config.user}/${this.$_config.repo}/issues?q=is%3Aissue+is%3Aopen+label%3A`;
+    },
+
     htmlResource () {
       return marked(this.item.body);
     },
@@ -102,9 +106,9 @@ export default {
           repo: this.$_config.gitalk.repo,
           owner: this.$_config.gitalk.owner,
           admin: this.$_config.gitalk.admin,
-          id: md5(this.$route.fullPath),
+          id: this.$route.fullPath,
           labels: ['comments'],
-          distractionFreeMode: false,
+          distractionFreeMode: true,
           language: 'en'
         });
 
