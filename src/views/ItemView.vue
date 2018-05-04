@@ -32,9 +32,7 @@
 </template>
 
 <script lang='ts'>
-import 'viewerjs/dist/viewer.min.css';
-import 'highlightjs/styles/agate.css';
-// import * as Viewer from 'viewerjs';
+import 'highlight.js/styles/agate.css';
 import * as hljs from 'highlight.js';
 import * as marked from 'marked';
 
@@ -96,7 +94,7 @@ export default {
   },
 
   asyncData ({ store, route: { params: { id } } }: AsyncData) {
-    return store.dispatch('FETCH_SINGLEISSUE', { number: [id] });
+    return store.dispatch('FETCH_SINGLEISSUE', { issueNumber: [id] });
   },
 
   title () {
@@ -104,11 +102,6 @@ export default {
   },
 
   methods: {
-    // initViewer () {
-    //   Viewer.setDefaults(this.viewerOptions);
-    //   new Viewer(document.querySelectorAll('.content')[0]);
-    // },
-
     initComments () {
       if (process.browser) {
         const Gitalk = require('gitalk');
@@ -123,15 +116,14 @@ export default {
           distractionFreeMode: true,
           language: 'en'
         });
-
-        gitalk.render('item-view-comments');
+        return gitalk.render('item-view-comments');
       }
+      return false;
     }
   },
 
   mounted () {
     hljs.initHighlightingOnLoad();
-    // this.initViewer();
     this.initComments();
   }
 };

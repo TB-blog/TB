@@ -26,7 +26,7 @@ module.exports = {
     noParse: /es6-promise\.js$/,
     rules: [
       {
-        test: /\.(vue|js)$/,
+        test: /\.js$/,
         loader: 'eslint-loader',
         exclude: /node_modules/,
         enforce: 'pre'

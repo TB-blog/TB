@@ -13,7 +13,7 @@ export default function createListView(type: string) {
       switch (type) {
         case 'blog':
           return store.dispatch('FETCH_ISSUES', {
-            page: route.fullPath.split('/')[2] || 1,
+            page: Number(route.fullPath.split('/')[2]) || 1,
             size: 10,
           });
 
