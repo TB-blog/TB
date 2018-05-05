@@ -1,6 +1,6 @@
 <div align="center">
   <a href="#">
-    <img width="80" src="https://blog.trevor.top/public/logo-512.png" alt="LOGO">
+    <img width="80" src="http://ojiq40lzd.bkt.clouddn.com/logo-512.png" alt="LOGO">
   </a>
 </div>
 <br>
