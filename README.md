@@ -5,13 +5,13 @@
 </div>
 <br>
 <div align="center">
-  <a href="http://forthebadge.com">
+  <a href="https://vuejs.org">
     <img src="http://forthebadge.com/images/badges/made-with-vue.svg">
   </a>
-  <a href="http://forthebadge.com">
+  <a href="https://t66y.com">
     <img src="http://forthebadge.com/images/badges/ages-18.svg">
   </a>
-  <a href="http://forthebadge.com">
+  <a href="http://ojiq40lzd.bkt.clouddn.com/love-qr.png">
     <img src="http://forthebadge.com/images/badges/built-with-love.svg">
   </a>
 </div>
