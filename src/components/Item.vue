@@ -36,10 +36,3 @@
     </span>
   </li>
 </template>
-
-<script lang='ts'>
-export default {
-  name: 'blogs-item',
-  props: ['item', 'type']
-};
-</script>

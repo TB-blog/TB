@@ -14,21 +14,3 @@
     </p>
   </div>
 </template>
-
-<script lang='ts'>
-export default {
-  name: 'error-view',
-
-  title () {
-    return this.code
-      ? this.code + ' Not Found'
-      : '500' + ' Service Error';
-  },
-
-  computed: {
-    code () {
-      return this.$route.params.code;
-    }
-  }
-};
-</script>

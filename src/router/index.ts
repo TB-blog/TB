@@ -3,9 +3,9 @@ import Router, { RouterOptions } from 'vue-router';
 
 Vue.use(Router);
 
-const createListView = (id: string) => () => import('../views/CreateListView').then((m: any) => m.default(id));
-const itemView = () => import('../views/itemView.vue');
-const errorView = () => import('../views/errorView.vue');
+const createListView = (type: string) => () => import('../views/CreateListView').then((m: any) => m.default(type));
+const createItemView = (type: string) => () => import('../views/CreateItemView').then((m: any) => m.default(type));
+const errorView = () => import('../views/errorView');
 
 export function createRouter(): Router {
   return new Router({
@@ -15,7 +15,7 @@ export function createRouter(): Router {
     routes: [
       { path: '/blog/:page(\\d+)?', component: createListView('blog') },
       { path: '/repo', component: createListView('repo') },
-      { path: '/item/:id(\\d+)', component: itemView },
+      { path: '/item/:id(\\d+)', component: createItemView('item') },
       { path: '/error/:code', component: errorView },
       { path: '/', redirect: '/blog' },
     ],

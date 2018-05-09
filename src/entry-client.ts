@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import 'es6-promise/auto';
 import { createApp } from './app';
-import ProgressBar from './components/ProgressBar.vue';
+import ProgressBar from './components/ProgressBar';
 
 const bar: any = Vue.prototype.$bar = new Vue(ProgressBar).$mount();
 document.body.appendChild(bar.$el);
