@@ -37,28 +37,48 @@ A simple & cool blog platform, based on `GitHub API`, designed for Geeks.
 npm install tb-cli -g
 ```
 
-If you want more details please see [TB-CLI](https://github.com/TB-blog/TB-CLI).
-
 ### Usage
+We highly recommend that please use [TB-CLI](https://github.com/TB-blog/TB-CLI).
 
-#### Start
+## Start
 
-Make sure you have installed [TB-CLI](https://github.com/TB-blog/TB-CLI).
+Make sure you have installed [TB-CLI](https://github.com/TB-blog/TB-CLI). More details please click [here](https://github.com/TB-blog/TB-CLI).
 
 ```shell
 tb init
 ```
-After generating TB, open your browser and visit http://127.0.0.1:8080.
+After generating TB, open your browser and visit http://127.0.0.1:2333.
 
-#### Development
+## Development
 
 ```shell
 git clone git@github.com:HuangXiZhou/TB-2.0.git
 cd TB-2.0
 yarn
-yarn run dev
 ```
-Open your browser and visit http://127.0.0.1:8080.
+**Attention:** *You need to add a config file. If you are not a developer, please use [TB-CLI](https://github.com/TB-blog/TB-CLI) to get start.*
+
+If you are a developer, you need to create a new file name `config.ts`.
+
+```javascript
+export default {
+  token: '***', // your personal access token
+  nickname: 'nickname', // your nickname
+  user: 'TB', // your Github username
+  repo: 'TB', // your repo name
+  motto: 'A man who loves the world.', // your own motto
+  gitalk: {
+    useGitalk: true, // use comment component, more details please see https://github.com/gitalk/gitalk
+    clientID: '***',
+    clientSecret: '***',
+    repo: 'TB-comments',
+    owner: 'TB',
+    admin: ['TB']
+  }
+};
+```
+
+Run `yarn run dev` then open your browser and visit http://127.0.0.1:2333.
 
 ## Contributing
 Welcome to contribute by creating issues or sending pull requests. See [Contributing Guide](CONTRIBUTING.md) for guidelines.
