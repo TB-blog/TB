@@ -80,7 +80,7 @@ function render (req, res) {
   };
 
   const context = {
-    title: 'Trevor Blog',
+    title: 'TB',
     url: req.url
   };
   renderer.renderToString(context, (err, html) => {

@@ -1,6 +1,6 @@
 {
-  "name": "blog-2.0",
-  "description": "Trevor's Blog-2.0",
+  "name": "tb",
+  "description": "TB",
   "author": "Trevor <xizhouh@gmail.com>",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
   },
   "engines": {
-    "node": ">=7.0",
+    "node": ">=8.0",
     "npm": ">=4.0"
   },
   "dependencies": {

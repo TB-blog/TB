@@ -11,7 +11,7 @@ const serverTitleMixin = {
   created() {
     const title = getTitle(this);
     if (title) {
-      (this as any).$ssrContext.title = `Trevor Blog | ${title}`;
+      (this as any).$ssrContext.title = `TB | ${title}`;
     }
   },
 };
@@ -20,7 +20,7 @@ const clientTitleMixin = {
   mounted() {
     const title = getTitle(this);
     if (title) {
-      document.title = `Trevor Blog | ${title}`;
+      document.title = `TB | ${title}`;
     }
   },
 };
