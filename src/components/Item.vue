@@ -10,7 +10,7 @@
         <a rel="noopener">{{ item.title }}</a>
       </template>
       <template v-else>
-        <a :href="'https://github.com/HuangXiZhou/' + item.name" target="_blank" rel="noopener">
+        <a :href="`https://github.com/${this.$_config.user}/` + item.name" target="_blank" rel="noopener">
           {{ item.name }}
         </a>
       </template>

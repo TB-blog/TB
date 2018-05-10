@@ -49,7 +49,9 @@ export function fetchIssues(page: number, size: number) {
     }).then(data => {
       const rows = {
         content: data.data,
-        maxPage: findMaxPage(page, data.headers.link),
+        maxPage: data.data.length && data.headers.link
+                  ? findMaxPage(page, data.headers.link)
+                  : 1,
       };
       if ((api as any).cached) {
         (api as any).cached.set(key, rows);
