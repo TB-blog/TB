@@ -20,6 +20,15 @@
 
 A simple & cool blog platform, based on `GitHub API`, designed for Geeks.
 
+## Prerequisites
+
+* Operating System: Linux, OS X or Windows.
+* Node.js Runtime: 8.x or newer; it is recommended that you use [LTS Releases](https://nodejs.org).
+
+## Language
+
+[中文](README.zh-CN.md)
+
 ## Links
 
 * [Home](https://github.com/TB-blog/TB)
@@ -38,7 +47,8 @@ npm install tb-cli -g
 ```
 
 ### Usage
-We highly recommend that please use [TB-CLI](https://github.com/TB-blog/TB-CLI).
+
+Highly recommend that please use [TB-CLI](https://github.com/TB-blog/TB-CLI).
 
 ## Start
 
@@ -58,7 +68,7 @@ yarn
 ```
 **Attention:** *You need to add a config file. If you are not a developer, please use [TB-CLI](https://github.com/TB-blog/TB-CLI) to get start.*
 
-If you are a developer, you need to create a new file name `config.ts`.
+If you are a developer, you need to create a new file name `config.ts` undered the root.
 
 ```javascript
 export default {
