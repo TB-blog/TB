@@ -9,13 +9,13 @@ export default function createItemView(type: string) {
   return {
     name: `${type}-view`,
 
-    asyncData ({ store, route }: { store: Store<State>, route: Route }) {
+    asyncData({ store, route }: { store: Store<State>, route: Route }) {
       return store.dispatch('FETCH_SINGLEISSUE', { issueNumber: [route.params.id] });
     },
 
     title: camelize('article'),
 
-    render (h: any) {
+    render(h: any) {
       return h(ItemView);
     },
   };

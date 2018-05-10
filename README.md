@@ -16,14 +16,15 @@
   </a>
 </div>
 
-# TB-2.0
+# TB
 
 A simple & cool blog platform, based on `GitHub API`, designed for Geeks.
 
 ## Links
 
-* [Home](https://github.com/HuangXiZhou/TB-2.0)
+* [Home](https://github.com/TB-blog/TB)
 * [Example](https://blog.trevor.top)
+* [TB-CLI](https://github.com/TB-blog/TB-CLI)
 
 ![example-q](http://ojiq40lzd.bkt.clouddn.com/example-qr.png)
 
@@ -33,12 +34,23 @@ A simple & cool blog platform, based on `GitHub API`, designed for Geeks.
 ### Install
 
 ```shell
-git clone git@github.com:HuangXiZhou/TB-2.0.git
+npm install tb-cli -g
 ```
+
+If you want more details please see [TB-CLI](https://github.com/TB-blog/TB-CLI).
 
 ### Usage
 
-## Development
+#### Start
+
+Make sure you have installed [TB-CLI](https://github.com/TB-blog/TB-CLI).
+
+```shell
+tb init
+```
+After generating TB, open your browser and visit http://127.0.0.1:8080.
+
+#### Development
 
 ```shell
 git clone git@github.com:HuangXiZhou/TB-2.0.git
@@ -52,4 +64,4 @@ Open your browser and visit http://127.0.0.1:8080.
 Welcome to contribute by creating issues or sending pull requests. See [Contributing Guide](CONTRIBUTING.md) for guidelines.
 
 ## License
-Mand Mobile is licensed under the MIT License. See the [LICENSE](LICENSE) file.
+TB is licensed under the MIT License. See the [LICENSE](LICENSE) file.

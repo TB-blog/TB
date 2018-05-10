@@ -9,7 +9,7 @@ export default function createListView(type: string) {
   return {
     name: `${type}-view`,
 
-    asyncData ({ store, route }: { store: Store<State>, route: Route }) {
+    asyncData({ store, route }: { store: Store<State>, route: Route }) {
       switch (type) {
         case 'blog':
           return store.dispatch('FETCH_ISSUES', {
@@ -27,7 +27,7 @@ export default function createListView(type: string) {
 
     title: camelize(type),
 
-    render (h: any) {
+    render(h: any) {
       return h(ItemList, { props: { type } });
     },
   };

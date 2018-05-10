@@ -1,20 +1,20 @@
-import { Component, Vue, Provide } from 'vue-property-decorator';
-import template from './ProgressBar.vue'
+import { Component, Provide, Vue } from 'vue-property-decorator';
+import template from './ProgressBar.vue';
 
 @Component({
   name: 'progress-bar',
-  mixins: [template]
+  mixins: [template],
 })
 export default class ProgressBar extends Vue {
-  @Provide() percent: number = 0;
-  @Provide() show: boolean = false;
-  @Provide() canSuccess: boolean = true;
-  @Provide() duration: number = 3000;
-  @Provide() height: string = '2px';
-  @Provide() color: string = 'ffca2b';
-  @Provide() failedColor: string = 'ff0000';
+  @Provide() public percent: number = 0;
+  @Provide() public show: boolean = false;
+  @Provide() public canSuccess: boolean = true;
+  @Provide() public duration: number = 3000;
+  @Provide() public height: string = '2px';
+  @Provide() public color: string = 'ffca2b';
+  @Provide() public failedColor: string = 'ff0000';
 
-  start () {
+  public start() {
     this.show = true;
     this.canSuccess = true;
     if ((this as any)._timer) {
@@ -31,39 +31,39 @@ export default class ProgressBar extends Vue {
     return this;
   }
 
-  set (num: number) {
+  public set(num: number) {
     this.show = true;
     this.canSuccess = true;
     this.percent = Math.floor(num);
     return this;
   }
 
-  get () {
+  public get() {
     return Math.floor(this.percent);
   }
 
-  increase (num: number) {
+  public increase(num: number) {
     this.percent = this.percent + Math.floor(num);
     return this;
   }
 
-  decrease (num: number) {
+  public decrease(num: number) {
     this.percent = this.percent - Math.floor(num);
     return this;
   }
 
-  finish () {
+  public finish() {
     this.percent = 100;
     this.hide();
     return this;
   }
 
-  pause () {
+  public pause() {
     clearInterval((this as any)._timer);
     return this;
   }
 
-  hide () {
+  public hide() {
     clearInterval((this as any)._timer);
     (this as any)._timer = null;
     setTimeout(() => {
@@ -77,7 +77,7 @@ export default class ProgressBar extends Vue {
     return this;
   }
 
-  fail () {
+  public fail() {
     this.canSuccess = false;
     return this;
   }

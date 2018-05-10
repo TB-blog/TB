@@ -26,7 +26,7 @@
           Updated {{ item.updated_at | timeAgo }}
         </p>
       </div>
-      <div id="item-view-comments"></div>
+      <div v-if="this.$_config.gitalk.useGitalk" id="item-view-comments"></div>
     </template>
   </div>
 </template>

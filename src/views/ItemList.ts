@@ -1,47 +1,49 @@
-import { Component, Vue, Prop, Provide, Watch } from 'vue-property-decorator';
-import template from './ItemList.vue'
+import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
 import Item from '../components/Item';
+import template from './ItemList.vue';
 
 @Component({
   name: 'itemList-view',
   mixins: [template],
   components: {
-    Item
-  }
+    Item,
+  },
 })
 export default class ItemList extends Vue {
-  @Prop() type: string;
+  @Prop() public type: string;
 
-  @Provide() transition: string = 'slide-right';
-  @Provide() displayedPage: number = 1;
-  @Provide() displayedItems: object = this.type === 'blog' ? this.$store.getters.issues : this.$store.getters.repos;
+  @Provide() public transition: string = 'slide-right';
+  @Provide() public displayedPage: number = 1;
+  @Provide() public displayedItems: object = this.type === 'blog'
+                      ? this.$store.getters.issues
+                      : this.$store.getters.repos;
 
-  get page (): number {
+  get page(): number {
     return Number(this.$route.params.page) || 1;
   }
-  get maxPage (): number {
+  get maxPage(): number {
     return this.$store.state.maxPage;
   }
-  get hasMore (): boolean {
+  get hasMore(): boolean {
     return this.page < this.maxPage;
   }
 
-  beforeMount () {
+  public beforeMount() {
     if ((this as any).$root._isMounted && this.type === 'blog') {
       this.loadItems(this.page);
     }
   }
 
   @Watch('page')
-  onLoadItems (to: number, from: number) {
+  public onLoadItems(to: number, from: number) {
     this.loadItems(to, from);
   }
 
-  loadItems (to: number = this.page, from: number = -1) {
+  public loadItems(to: number = this.page, from: number = -1) {
     (this as any).$bar.start();
     this.$store.dispatch('FETCH_ISSUES', {
       page: this.page,
-      size: 10
+      size: 10,
     }).then(() => {
       if (this.page < 0 || this.page > this.maxPage) {
         this.$router.replace(`/${this.type}/1`);
