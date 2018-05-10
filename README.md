@@ -91,7 +91,9 @@ export default {
 Run `yarn run dev` then open your browser and visit http://127.0.0.1:2333.
 
 ## Contributing
+
 Welcome to contribute by creating issues or sending pull requests. See [Contributing Guide](CONTRIBUTING.md) for guidelines.
 
 ## License
-TB is licensed under the MIT License. See the [LICENSE](LICENSE) file.
+
+[MIT](LICENSE)
