@@ -62,8 +62,8 @@ tb init
 ## 开发
 
 ```shell
-git clone git@github.com:HuangXiZhou/TB-2.0.git
-cd TB-2.0
+git clone git@github.com:TB-blog/TB.git
+cd TB/
 yarn
 ```
 **注意:** *你需要添加配置文件。 如果你不是一位开发者，请使用 [TB-CLI](https://github.com/TB-blog/TB-CLI) 来生成 TB。*

@@ -62,8 +62,8 @@ After generating TB, open your browser and visit http://127.0.0.1:2333.
 ## Development
 
 ```shell
-git clone git@github.com:HuangXiZhou/TB-2.0.git
-cd TB-2.0
+git clone git@github.com:TB-blog/TB.git
+cd TB/
 yarn
 ```
 **Attention:** *You need to add a config file. If you are not a developer, please use [TB-CLI](https://github.com/TB-blog/TB-CLI) to get start.*

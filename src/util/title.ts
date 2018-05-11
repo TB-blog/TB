@@ -1,3 +1,5 @@
+const _config = require('../../config.json');
+
 function getTitle(vm: any) {
   const { title } = vm.$options;
   if (title) {
@@ -11,7 +13,7 @@ const serverTitleMixin = {
   created() {
     const title = getTitle(this);
     if (title) {
-      (this as any).$ssrContext.title = `TB | ${title}`;
+      (this as any).$ssrContext.title = `${_config.user} | ${title}`;
     }
   },
 };
@@ -20,7 +22,7 @@ const clientTitleMixin = {
   mounted() {
     const title = getTitle(this);
     if (title) {
-      document.title = `TB | ${title}`;
+      document.title = `${_config.user} | ${title}`;
     }
   },
 };

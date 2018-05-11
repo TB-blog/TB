@@ -5,6 +5,7 @@ const favicon = require('serve-favicon');
 const compression = require('compression');
 const microcache = require('route-cache');
 const LRU = require('lru-cache');
+const _config = require('./config.json');
 const resolve = file => path.resolve(__dirname, file);
 const { createBundleRenderer } = require('vue-server-renderer');
 
@@ -80,7 +81,7 @@ function render (req, res) {
   };
 
   const context = {
-    title: 'TB',
+    title: _config.user,
     url: req.url
   };
   renderer.renderToString(context, (err, html) => {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as md5 from 'md5';
-import _config from '../../config';
+const _config = require('../../config.json');
 import api from './config-api-server';
 
 axios.defaults.timeout = 3000;
