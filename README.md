@@ -68,24 +68,24 @@ yarn
 ```
 **Attention:** *You need to add a config file. If you are not a developer, please use [TB-CLI](https://github.com/TB-blog/TB-CLI) to get start.*
 
-If you are a developer, you need to create a new file name `config.ts` undered the root.
+If you are a developer, you need to create a new file name `config.json` undered the project's root folder.
 
 ```javascript
-export default {
-  token: '***', // your personal access token
-  nickname: 'nickname', // your nickname
-  user: 'TB', // your Github username
-  repo: 'TB', // your repo name
-  motto: 'A man who loves the world.', // your own motto
-  gitalk: {
-    useGitalk: true, // use comment component, more details please see https://github.com/gitalk/gitalk
-    clientID: '***',
-    clientSecret: '***',
-    repo: 'TB-comments',
-    owner: 'TB',
-    admin: ['TB']
+{
+  "token": "***", // your personal access token
+  "nickname": "nickname", // your nickname
+  "user": "TB", // your Github username
+  "repo": "TB", // your repo name
+  "motto": "A man who loves the world.", // your own motto
+  "gitalk": {
+    "useGitalk": true, // use comment component, more details please see https://github.com/gitalk/gitalk
+    "clientID": "***",
+    "clientSecret": "***",
+    "repo": "TB-comments",
+    "owner": "TB",
+    "admin": ["TB"]
   }
-};
+}
 ```
 
 Run `yarn run dev` then open your browser and visit http://127.0.0.1:2333.
