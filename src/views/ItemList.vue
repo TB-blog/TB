@@ -4,10 +4,12 @@
 
 <template>
   <div class="list-view" :class="{ 'repos-view': type === 'repo' }">
-    <section class="description">
-      <p>{{ this.$_config.motto }}</p>
+    <section class="bio">
+      <blockquote>
+        <p>{{ userInfo.bio ? userInfo.bio : 'A man who loves the world.' }}</p>
+      </blockquote>
     </section>
-    <div v-show="type === 'blog'" class="list-nav">
+    <div v-show="type === 'blog' && maxPage !== 1" class="list-nav">
       <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">PREV</router-link>
       <a v-else class="disabled">PREV</a>
       <span>{{ page }}/{{ maxPage }}</span>
@@ -24,15 +26,25 @@
         </div>
       </transition>
     </template>
-    <template v-else>
+    <template v-if="!displayedItems.length && type === 'blog' && page <= maxPage">
       <div class="empty-issue">
-        Congratulations on your successful launch of the
-        <a href="https://github.com/TB-blog/TB" target="_blank" rel="noopener">TB</a>,
+        <h1>Congratulations!</h1>
+        You started
+        <a href="https://github.com/TB-blog/TB" target="_blank" rel="noopener">TB</a> successfully,
         but it looks like you have not yet created a new issue.
         If you are the admin, please click
         <a :href="`https://github.com/${this.$_config.user}/${this.$_config.repo}/issues/new`" target="_blank" rel="noopener">here</a>
         to start.<br>
         If you created new issue successfully, please use <code>Ctrl C</code> and <code>tb run</code> to reload TB.
+      </div>
+    </template>
+    <template v-if="!displayedItems.length && type === 'repo' && page <= maxPage">
+      <div class="empty-issue">
+        <h1>Sorry...</h1>
+        There is no repository, you can click
+        <a :href="`https://github.com/${this.$_config.user}`" target="_blank" rel="noopener">here</a>
+        to check my profile or see my
+        <router-link to="/blog">blogs</router-link>.
       </div>
     </template>
   </div>

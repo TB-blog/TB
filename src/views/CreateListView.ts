@@ -12,13 +12,17 @@ export default function createListView(type: string) {
     asyncData({ store, route }: { store: Store<State>, route: Route }) {
       switch (type) {
         case 'blog':
-          return store.dispatch('FETCH_ISSUES', {
+          store.dispatch('FETCH_ISSUES', {
             page: Number(route.fullPath.split('/')[2]) || 1,
             size: 10,
           });
+          store.dispatch('FETCH_USER');
+          return;
 
         case 'repo':
-          return store.dispatch('FETCH_REPOS');
+          store.dispatch('FETCH_REPOS');
+          store.dispatch('FETCH_USER');
+          return;
 
         default:
           break;

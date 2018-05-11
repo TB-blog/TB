@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as md5 from 'md5';
-const _config = require('../../config.json');
+import * as _config from '../../config.json';
 import api from './config-api-server';
 
 axios.defaults.timeout = 3000;
@@ -21,6 +21,7 @@ function findMaxPage(curPage: number, linkStr: string) {
 function warmCache() {
   fetchIssues(1, 10);
   fetchRepos();
+  fetchUser();
   setTimeout(warmCache, 1000 * 60 * 15);
 }
 
@@ -38,9 +39,9 @@ export function fetchIssues(page: number, size: number) {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues`,
+      url: `${baseUrl}/repos/${(_config as any).user}/${(_config as any).repo}/issues`,
       params: {
-        access_token: _config.token,
+        access_token: (_config as any).token,
         sort: 'created',
         state: 'open',
         page,
@@ -73,9 +74,9 @@ export function fetchUser() {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/users/${_config.user}`,
+      url: `${baseUrl}/users/${(_config as any).user}`,
       params: {
-        access_token: _config.token,
+        access_token: (_config as any).token,
       },
     }).then(data => {
       if ((api as any).cached) {
@@ -97,9 +98,9 @@ export function fetchRepos() {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/users/${_config.user}/repos`,
+      url: `${baseUrl}/users/${(_config as any).user}/repos`,
       params: {
-        access_token: _config.token,
+        access_token: (_config as any).token,
         sort: 'created',
         direction: 'desc',
       },
@@ -123,9 +124,9 @@ export function fetchSingleIssue(issueNumber: number) {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues/${issueNumber}`,
+      url: `${baseUrl}/repos/${(_config as any).user}/${(_config as any).repo}/issues/${issueNumber}`,
       params: {
-        access_token: _config.token,
+        access_token: (_config as any).token,
       },
     }).then(data => {
       if ((api as any).cached) {

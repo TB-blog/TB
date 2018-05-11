@@ -1,5 +1,7 @@
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
+import { Store } from 'vuex';
 import Item from '../components/Item';
+import { State } from '../store/index';
 import template from './ItemList.vue';
 
 @Component({
@@ -14,7 +16,8 @@ export default class ItemList extends Vue {
 
   @Provide() public transition: string = 'slide-right';
   @Provide() public displayedPage: number = 1;
-  @Provide() public displayedItems: object = this.type === 'blog'
+  @Provide() public userInfo: any = this.$store.getters.user;
+  @Provide() public displayedItems: any = this.type === 'blog'
                       ? this.$store.getters.issues
                       : this.$store.getters.repos;
 
@@ -22,7 +25,7 @@ export default class ItemList extends Vue {
     return Number(this.$route.params.page) || 1;
   }
   get maxPage(): number {
-    return this.$store.state.maxPage;
+    return this.$store.state.maxPage || 1;
   }
   get hasMore(): boolean {
     return this.page < this.maxPage;

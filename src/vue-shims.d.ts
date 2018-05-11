@@ -15,6 +15,11 @@ declare namespace NodeJS {
   }
 }
 
+declare module "*.json" {
+  const value: any;
+  export default value;
+}
+
 interface Window {
 __INITIAL_STATE__: any;
 }

@@ -6,20 +6,6 @@ import ProgressBar from './components/ProgressBar';
 const bar: any = Vue.prototype.$bar = new Vue(ProgressBar).$mount();
 document.body.appendChild(bar.$el);
 
-Vue.mixin({
-  beforeRouteUpdate (to: any, from: any, next: any) {
-    const { asyncData } = (this as any).$options;
-    if (asyncData) {
-      asyncData({
-        store: (this as any).$store,
-        route: to
-      }).then(next).catch(next);
-    } else {
-      next();
-    }
-  }
-});
-
 const { app, router, store }: any = createApp();
 
 if (window.__INITIAL_STATE__) {
