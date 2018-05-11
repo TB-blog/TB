@@ -76,7 +76,6 @@ yarn
   "nickname": "nickname", // 昵称
   "user": "TB", // 你的 Github 用户名
   "repo": "TB", // 你 repo 名称
-  "motto": "A man who loves the world.", // 格言
   "gitalk": {
     "useGitalk": true, // 使用评论组件, 更多详情请看 https://github.com/gitalk/gitalk
     "clientID": "***",

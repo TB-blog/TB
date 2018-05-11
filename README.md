@@ -76,7 +76,6 @@ If you are a developer, you need to create a new file name `config.json` undered
   "nickname": "nickname", // your nickname
   "user": "TB", // your Github username
   "repo": "TB", // your repo name
-  "motto": "A man who loves the world.", // your own motto
   "gitalk": {
     "useGitalk": true, // use comment component, more details please see https://github.com/gitalk/gitalk
     "clientID": "***",
