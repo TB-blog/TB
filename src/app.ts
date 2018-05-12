@@ -5,7 +5,7 @@ import { createRouter } from './router';
 import { sync } from 'vuex-router-sync';
 import titleMixin from './util/title';
 import * as filters from './util/filters';
-const _config = require('../config.json');
+import _config from '../config.json';
 
 Vue.mixin(titleMixin);
 

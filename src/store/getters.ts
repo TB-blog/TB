@@ -13,4 +13,8 @@ export default {
   user(state: State) {
     return state.user;
   },
+
+  singleIssue(state: State) {
+    return state.singleIssue;
+  },
 } as GetterTree<State, any>;

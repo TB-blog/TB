@@ -7,9 +7,9 @@
     <header class="header">
       <nav class="inner">
         <div class="navBar">
-          <router-link to="/" exact>
+          <a href="/">
             <img class="logo" src="../public/logo-48.png" alt="logo">
-          </router-link>
+          </a>
           <router-link to="/blog">Blog</router-link>
           <router-link to="/repo">Repo</router-link>
           <a :href="`https://github.com/${this.$_config.user}`" target="_blank" rel="noopener">Github</a>

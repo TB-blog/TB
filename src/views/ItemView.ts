@@ -4,18 +4,6 @@ import * as marked from 'marked';
 import { Component, Provide, Vue } from 'vue-property-decorator';
 import template from './ItemView.vue';
 
-import { Store } from 'vuex';
-import { State } from '../store/index';
-
-interface AsyncData {
-  store: Store<State>;
-  route: {
-    params: {
-      id: number,
-    },
-  };
-}
-
 @Component({
   name: 'item-view',
   mixins: [template],
@@ -35,23 +23,22 @@ export default class ItemView extends Vue {
   @Provide() public loading: boolean = true;
 
   get labelUrl() {
-    return `https://github.com
-    /${(this as any).$_config.user}
-    /${(this as any).$_config.repo}
-    /issues?q=is%3Aissue+is%3Aopen+label%3A`;
+    return 'https://github.com/'
+    + (this as any).$_config.user
+    + '/'
+    + (this as any).$_config.repo
+    + '/issues?q=is%3Aissue+is%3Aopen+label%3A';
   }
-
   get htmlResource() {
     return marked(this.item.body);
   }
-
   get item() {
     if (this.$store.state.issues.length) {
       return this.$store.state.issues.filter((el: any) => {
         return String(el.number) === this.$route.params.id;
       })[0];
     }
-    return this.$store.state.singleIssue;
+    return this.$store.getters.singleIssue;
   }
 
   public initComments() {
@@ -70,9 +57,8 @@ export default class ItemView extends Vue {
       });
       return comment.render('item-view-comments');
     }
-    return false;
+    return;
   }
-
   public mounted() {
     hljs.initHighlightingOnLoad();
     this.initComments();

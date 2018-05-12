@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as md5 from 'md5';
-import * as _config from '../../config.json';
+import _config from '../../config.json';
 import api from './config-api-server';
 
 axios.defaults.timeout = 3000;
@@ -20,13 +20,62 @@ function findMaxPage(curPage: number, linkStr: string) {
 
 function warmCache() {
   fetchIssues(1, 10);
-  fetchRepos();
-  fetchUser();
+  fetchReposAndUser();
   setTimeout(warmCache, 1000 * 60 * 15);
 }
 
 if ((api as any).onServer) {
   warmCache();
+}
+
+function fetchUser() {
+  const key = 'user';
+  return new Promise((resolve, reject) => {
+    if ((api as any).cached && (api as any).cached.has(key)) {
+      resolve((api as any).cached.get(key));
+    }
+
+    return axios({
+      method: 'get',
+      url: `${baseUrl}/users/${_config.user}`,
+      params: {
+        access_token: _config.token,
+      },
+    }).then(data => {
+      if ((api as any).cached) {
+        (api as any).cached.set(key, data.data);
+      }
+      resolve(data.data);
+    }).catch(data => {
+      reject(data);
+    });
+  });
+}
+
+function fetchRepos() {
+  const key = 'repos';
+  return new Promise((resolve, reject) => {
+    if ((api as any).cached && (api as any).cached.has(key)) {
+      resolve((api as any).cached.get(key));
+    }
+
+    return axios({
+      method: 'get',
+      url: `${baseUrl}/users/${_config.user}/repos`,
+      params: {
+        access_token: _config.token,
+        sort: 'created',
+        direction: 'desc',
+      },
+    }).then(data => {
+      if ((api as any).cached) {
+        (api as any).cached.set(key, data.data);
+      }
+      resolve(data.data);
+    }).catch(data => {
+      reject(data);
+    });
+  });
 }
 
 export function fetchIssues(page: number, size: number) {
@@ -39,7 +88,7 @@ export function fetchIssues(page: number, size: number) {
 
     return axios({
       method: 'get',
-      url: `${baseUrl}/repos/${(_config as any).user}/${(_config as any).repo}/issues`,
+      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues`,
       params: {
         access_token: (_config as any).token,
         sort: 'created',
@@ -65,54 +114,12 @@ export function fetchIssues(page: number, size: number) {
   });
 }
 
-export function fetchUser() {
-  const key = 'user';
-  return new Promise((resolve, reject) => {
-    if ((api as any).cached && (api as any).cached.has(key)) {
-      resolve((api as any).cached.get(key));
-    }
-
-    return axios({
-      method: 'get',
-      url: `${baseUrl}/users/${(_config as any).user}`,
-      params: {
-        access_token: (_config as any).token,
-      },
-    }).then(data => {
-      if ((api as any).cached) {
-        (api as any).cached.set(key, data.data);
-      }
-      resolve(data.data);
-    }).catch(data => {
-      reject(data);
-    });
-  });
+export function fetchIssuesAndUser(page: number, size: number) {
+  return Promise.all([fetchIssues(page, size), fetchUser()]);
 }
 
-export function fetchRepos() {
-  const key = 'repos';
-  return new Promise((resolve, reject) => {
-    if ((api as any).cached && (api as any).cached.has(key)) {
-      resolve((api as any).cached.get(key));
-    }
-
-    return axios({
-      method: 'get',
-      url: `${baseUrl}/users/${(_config as any).user}/repos`,
-      params: {
-        access_token: (_config as any).token,
-        sort: 'created',
-        direction: 'desc',
-      },
-    }).then(data => {
-      if ((api as any).cached) {
-        (api as any).cached.set(key, data.data);
-      }
-      resolve(data.data);
-    }).catch(data => {
-      reject(data);
-    });
-  });
+export function fetchReposAndUser() {
+  return Promise.all([fetchRepos(), fetchUser()]);
 }
 
 export function fetchSingleIssue(issueNumber: number) {
