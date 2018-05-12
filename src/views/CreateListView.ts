@@ -16,8 +16,6 @@ export default function createListView(type: string) {
             page: route.params.page ? Number(route.params.page) : 1,
             size: 10,
           });
-          store.dispatch('FETCH_USER');
-          return;
 
         case 'repo':
           return store.dispatch('FETCH_REPOS_AND_USER');
