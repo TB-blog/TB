@@ -16,13 +16,14 @@ a
   transition color 0.15s ease
 
 .header
+  font-size 16px
   height 55px
   overflow hidden
   .inner
     max-width 800px
     box-sizing border-box
     margin 0px auto
-    padding 15px 5px
+    padding 15px 20px
   a
     color #d480aa
     line-height 24px
@@ -56,29 +57,15 @@ a
 .fade-enter, .fade-leave-active
   opacity 0
 
-.navBar
-  transition transform .3s
-
-.motto
-  color #fff
-  font-weight 400
-
-.navBar-hidden
-  display none
-
-.is-hidden-nav
-  transform translateY(-200%)
-
-.is-hidden-motto
-  transform translateY(-225%)
 
 @media (max-width 860px)
   .header .inner
-    padding 15px 30px
+    padding 15px 21px
 
 @media (max-width 600px)
   .header
+    font-size 14px
     .inner
-      padding 15px
+      padding 15px 21px
     a
       margin-right 1em

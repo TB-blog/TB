@@ -14,12 +14,13 @@ export default class ItemList extends Vue {
 
   @Provide() public transition: string = 'slide-right';
   @Provide() public displayedPage: number = 1;
+  @Provide() public user: any = this.$store.getters.user;
   @Provide() public displayedItems: object = this.type === 'blog'
                       ? this.$store.getters.issues
                       : this.$store.getters.repos;
 
   get page(): number {
-    return Number(this.$route.params.page) || 1;
+    return this.$route.params.page ? Number(this.$route.params.page) : 1;
   }
   get maxPage(): number {
     return this.$store.state.maxPage;
@@ -46,7 +47,7 @@ export default class ItemList extends Vue {
       size: 10,
     }).then(() => {
       if (this.page < 0 || this.page > this.maxPage) {
-        this.$router.replace(`/${this.type}/1`);
+        this.$router.replace('/blog/1');
         return;
       }
       this.transition = from === -1

@@ -9,4 +9,12 @@ export default {
   repos(state: State) {
     return state.repos;
   },
+
+  user(state: State) {
+    return state.user;
+  },
+
+  singleIssue(state: State) {
+    return state.singleIssue;
+  },
 } as GetterTree<State, any>;

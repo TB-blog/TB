@@ -3,6 +3,11 @@ declare module "*.vue" {
   export default Vue;
 }
 
+declare module "*.json" {
+  const value: any;
+  export default value;
+}
+
 declare var System: any;
 
 declare var require: NodeRequire;

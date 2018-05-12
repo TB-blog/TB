@@ -62,30 +62,29 @@ tb init
 ## 开发
 
 ```shell
-git clone git@github.com:HuangXiZhou/TB-2.0.git
-cd TB-2.0
+git clone git@github.com:TB-blog/TB.git
+cd TB/
 yarn
 ```
 **注意:** *你需要添加配置文件。 如果你不是一位开发者，请使用 [TB-CLI](https://github.com/TB-blog/TB-CLI) 来生成 TB。*
 
-如果是开发者，你需要在项目根目录下创建一个名为 `config.ts` 的配置文件.
+如果是开发者，你需要在项目根目录下创建一个名为 `config.json` 的配置文件.
 
 ```javascript
-export default {
-  token: '***', // 个人 Github access token
-  nickname: 'nickname', // 昵称
-  user: 'TB', // 你的 Github 用户名
-  repo: 'TB', // 你 repo 名称
-  motto: 'A man who loves the world.', // 格言
-  gitalk: {
-    useGitalk: true, // 使用评论组件, 更多详情请看 https://github.com/gitalk/gitalk
-    clientID: '***',
-    clientSecret: '***',
-    repo: 'TB-comments',
-    owner: 'TB',
-    admin: ['TB']
+{
+  "token": "***", // 个人 Github access token
+  "nickname": "nickname", // 昵称
+  "user": "TB", // 你的 Github 用户名
+  "repo": "TB", // 你 repo 名称
+  "gitalk": {
+    "useGitalk": true, // 使用评论组件, 更多详情请看 https://github.com/gitalk/gitalk
+    "clientID": "***",
+    "clientSecret": "***",
+    "repo": "TB-comments",
+    "owner": "TB",
+    "admin": ["TB"]
   }
-};
+}
 ```
 
 运行 `yarn run dev` 然后打开浏览器地址栏输入 http://127.0.0.1:2333。

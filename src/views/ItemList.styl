@@ -1,7 +1,7 @@
 .repos-view
   padding-top 4px
 
-.empty-issue
+.empty-item
   padding 15px 30px
   line-height 2em
   a
@@ -19,11 +19,15 @@
 .list-nav, .list
   border-radius 2px
 
-.description
+.bio
   padding 15px 30px
   text-align left
-  a:hover
-    color #d480aa
+  blockquote
+    font-size 16px;
+    color #999
+    border-left .25rem solid #42b983
+    margin-left 0
+    padding-left 1rem
 
 .list-nav
   padding 15px 30px
@@ -65,5 +69,9 @@
   transform translate(30px, 0)
 
 @media (max-width 600px)
+  .bio
+    blockquote
+      font-size 14px
+
   .list
     margin 10px 0
