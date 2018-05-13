@@ -48,14 +48,14 @@ npm install tb-cli -g
 
 ### 使用
 
-强烈推荐使用 [TB-CLI](https://github.com/TB-blog/TB-CLI)。
+强烈推荐使用 [TB-CLI](https://github.com/TB-blog/TB-CLI)（具体使用说明均在 TB-CLI）。
 
 ## 快速开始
 
 请确保你已安装 [TB-CLI](https://github.com/TB-blog/TB-CLI)。 需了解更多详情请点击 [这里](https://github.com/TB-blog/TB-CLI)。
 
 ```shell
-tb init
+tb init [project-name]
 ```
 生成 TB 之后，打开浏览器地址栏输入 http://127.0.0.1:2333 即可。
 
@@ -63,8 +63,8 @@ tb init
 
 ```shell
 git clone git@github.com:TB-blog/TB.git
-cd TB/
-yarn
+cd TB
+npm install // 如果使用 yarn: yarn
 ```
 **注意:** *你需要添加配置文件。 如果你不是一位开发者，请使用 [TB-CLI](https://github.com/TB-blog/TB-CLI) 来生成 TB。*
 
@@ -77,7 +77,7 @@ yarn
   "user": "TB", // 你的 Github 用户名
   "repo": "TB", // 你 repo 名称
   "gitalk": {
-    "useGitalk": true, // 使用评论组件, 更多详情请看 https://github.com/gitalk/gitalk
+    "useGitalk": true, // 使用评论模块, 更多详情请看 https://github.com/gitalk/gitalk
     "clientID": "***",
     "clientSecret": "***",
     "repo": "TB-comments",
@@ -87,7 +87,11 @@ yarn
 }
 ```
 
-运行 `yarn run dev` 然后打开浏览器地址栏输入 http://127.0.0.1:2333。
+运行 `npm run dev` 然后打开浏览器地址栏输入 http://127.0.0.1:2333。
+
+## 主题
+
+你可以使用 `tb theme` 来查看最新官方主题（即将到来）。
 
 ## 贡献
 

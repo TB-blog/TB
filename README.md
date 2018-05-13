@@ -48,14 +48,17 @@ npm install tb-cli -g
 
 ### Usage
 
-Highly recommend that please use [TB-CLI](https://github.com/TB-blog/TB-CLI).
+Highly recommend that please use [TB-CLI](https://github.com/TB-blog/TB-CLI)(All usage informations are in there).
 
 ## Start
 
 Make sure you have installed [TB-CLI](https://github.com/TB-blog/TB-CLI). More details please click [here](https://github.com/TB-blog/TB-CLI).
 
 ```shell
-tb init
+tb init [project-name]
+cd [project-name]
+npm install // if using yarn: yarn
+npm run dev
 ```
 After generating TB, open your browser and visit http://127.0.0.1:2333.
 
@@ -63,8 +66,8 @@ After generating TB, open your browser and visit http://127.0.0.1:2333.
 
 ```shell
 git clone git@github.com:TB-blog/TB.git
-cd TB/
-yarn
+cd TB
+npm install // if using yarn: yarn
 ```
 **Attention:** *You need to add a config file. If you are not a developer, please use [TB-CLI](https://github.com/TB-blog/TB-CLI) to get start.*
 
@@ -77,7 +80,7 @@ If you are a developer, you need to create a new file name `config.json` undered
   "user": "TB", // your Github username
   "repo": "TB", // your repo name
   "gitalk": {
-    "useGitalk": true, // use comment component, more details please see https://github.com/gitalk/gitalk
+    "useGitalk": true, // use comment module, more details please see https://github.com/gitalk/gitalk
     "clientID": "***",
     "clientSecret": "***",
     "repo": "TB-comments",
@@ -87,7 +90,11 @@ If you are a developer, you need to create a new file name `config.json` undered
 }
 ```
 
-Run `yarn run dev` then open your browser and visit http://127.0.0.1:2333.
+Run `npm run dev` then open your browser and visit http://127.0.0.1:2333.
+
+## Themes
+
+you can run `tb theme` to check official themes(coming soon).
 
 ## Contributing
 

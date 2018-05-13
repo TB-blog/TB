@@ -4,19 +4,19 @@
   "author": "Trevor <xizhouh@gmail.com>",
   "private": true,
   "scripts": {
-    "generate": "node generate",
     "dev": "node server",
-    "lint": "eslint --ext .js --ext src/ build/ server.js generate.js && tslint --fix src/**/*.ts",
-    "lint-fix": "eslint --fix --ext .js src/ build/ server.js generate.js && tslint --fix src/**/*.ts",
+    "lint": "eslint --ext .js src/ build/ server.js && tslint --fix src/**/*.ts",
+    "lint-fix": "eslint --fix .js src/ build/ server.js && tslint --fix src/**/*.ts",
     "start": "cross-env NODE_ENV=production node server",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"
   },
-  "engines": {
-    "node": ">=8.0",
-    "npm": ">=4.0"
-  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint-fix"
+  ],
   "dependencies": {
     "axios": "^0.18.0",
     "compression": "^1.7.1",
@@ -26,14 +26,11 @@
     "express": "^4.16.2",
     "gitalk": "^1.2.2",
     "highlight.js": "^9.12.0",
-    "inquirer": "^5.2.0",
     "lru-cache": "^4.1.2",
     "marked": "^0.3.19",
     "md5": "^2.2.1",
-    "ora": "^2.1.0",
     "route-cache": "0.4.3",
     "serve-favicon": "^2.4.5",
-    "shelljs": "^0.8.2",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^6.0.0",
@@ -70,6 +67,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
@@ -90,5 +88,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
