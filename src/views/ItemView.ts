@@ -2,8 +2,8 @@ import * as hljs from 'highlight.js';
 import 'highlight.js/styles/agate.css';
 import * as marked from 'marked';
 import { Component, Provide, Vue } from 'vue-property-decorator';
-import template from '../../theme/theme-geek-dark/layout/src/ItemView.template.vue';
-import '../../theme/theme-geek-dark/source/style/ItemView.styl';
+import template from '../../theme/layout/src/ItemView.template.vue';
+import '../../theme/source/style/ItemView.styl';
 
 @Component({
   name: 'item-view',
