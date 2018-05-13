@@ -1,8 +1,9 @@
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
 import { Store } from 'vuex';
+import template from '../../theme/theme-geek-dark/layout/src/ItemList.template.vue';
+import '../../theme/theme-geek-dark/source/style/ItemList.styl';
 import Item from '../components/Item';
 import { State } from '../store/index';
-import template from './ItemList.vue';
 
 @Component({
   name: 'itemList-view',
@@ -31,17 +32,16 @@ export default class ItemList extends Vue {
     return this.page < this.maxPage;
   }
 
-  public beforeMount() {
-    if ((this as any).$root._isMounted && this.type === 'blog') {
-      this.loadItems(this.page);
-    }
-  }
-
   @Watch('page')
   public onLoadItems(to: number, from: number) {
     this.loadItems(to, from);
   }
 
+  public beforeMount() {
+    if ((this as any).$root._isMounted && this.type === 'blog') {
+      this.loadItems(this.page);
+    }
+  }
   public loadItems(to: number = this.page, from: number = -1) {
     (this as any).$bar.start();
     this.$store.dispatch('FETCH_ISSUES', {

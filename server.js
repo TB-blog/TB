@@ -30,7 +30,7 @@ function createRenderer (bundle, options) {
 
 let renderer;
 let readyPromise;
-const templatePath = resolve('./src/index.template.html');
+const templatePath = resolve('./theme/theme-geek-dark/layout/index.template.html');
 if (isProd) {
   const template = fs.readFileSync(templatePath, 'utf-8');
   const bundle = require('./dist/vue-ssr-server-bundle.json');
@@ -54,10 +54,10 @@ const serve = (path, cache) => express.static(resolve(path), {
 });
 
 app.use(compression({ threshold: 0 }));
-app.use(favicon('./public/logo-48.png'));
+app.use(favicon('./theme/theme-geek-dark/source/public/icons/logo-48.png'));
 app.use('/dist', serve('./dist', true));
-app.use('/public', serve('./public', true));
-app.use('/manifest.json', serve('./manifest.json', true));
+app.use('/public', serve('./theme/*/source/public', true));
+app.use('/manifest.json', serve('./theme/manifest.json', true));
 app.use('/service-worker.js', serve('./dist/service-worker.js'));
 
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl));

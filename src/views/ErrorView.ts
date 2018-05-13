@@ -1,5 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
-import template from './ErrorView.vue';
+import template from '../../theme/theme-geek-dark/layout/src/ErrorView.template.vue';
+import '../../theme/theme-geek-dark/source/style/ErrorView.styl';
 
 @Component({
   name: 'error-view',

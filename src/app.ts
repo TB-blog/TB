@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import App from './App.vue';
+import '../theme/theme-geek-dark/source/style/App.styl';
+import App from '../theme/theme-geek-dark/layout/src/App.template.vue';
 import { createStore } from './store';
 import { createRouter } from './router';
 import { sync } from 'vuex-router-sync';
