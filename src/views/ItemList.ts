@@ -1,7 +1,6 @@
 import { Component, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
 import { Store } from 'vuex';
 import template from '../../theme/layout/src/ItemList.template.vue';
-import '../../theme/source/style/ItemList.styl';
 import Item from '../components/Item';
 import { State } from '../store/index';
 

@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import '../theme/source/style/App.styl';
 import App from '../theme/layout/src/App.template.vue';
 import { createStore } from './store';
 import { createRouter } from './router';

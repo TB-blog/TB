@@ -1,6 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import template from '../../theme/layout/src/components/Item.template.vue';
-import '../../theme/source/style/Item.styl';
 
 @Component({
   name: 'item',
