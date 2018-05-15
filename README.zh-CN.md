@@ -76,14 +76,6 @@ npm install // 如果使用 yarn: yarn
   "nickname": "nickname", // 昵称
   "user": "TB", // 你的 Github 用户名
   "repo": "TB", // 你 repo 名称
-  "gitalk": {
-    "useGitalk": true, // 使用评论模块, 更多详情请看 https://github.com/gitalk/gitalk
-    "clientID": "***",
-    "clientSecret": "***",
-    "repo": "TB-comments",
-    "owner": "TB",
-    "admin": ["TB"]
-  }
 }
 ```
 
@@ -91,7 +83,7 @@ npm install // 如果使用 yarn: yarn
 
 ## 主题
 
-你可以使用 `tb theme` 来查看最新官方主题（即将到来）。
+你可以使用 `tb theme` 来查看最新官方主题。
 
 ## 贡献
 

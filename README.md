@@ -79,14 +79,6 @@ If you are a developer, you need to create a new file name `config.json` undered
   "nickname": "nickname", // your nickname
   "user": "TB", // your Github username
   "repo": "TB", // your repo name
-  "gitalk": {
-    "useGitalk": true, // use comment module, more details please see https://github.com/gitalk/gitalk
-    "clientID": "***",
-    "clientSecret": "***",
-    "repo": "TB-comments",
-    "owner": "TB",
-    "admin": ["TB"]
-  }
 }
 ```
 
@@ -94,7 +86,7 @@ Run `npm run dev` then open your browser and visit http://127.0.0.1:2333.
 
 ## Themes
 
-you can run `tb theme` to check official themes(coming soon).
+you can run `tb theme` to check official themes.
 
 ## Contributing
 
