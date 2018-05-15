@@ -17,4 +17,8 @@ export default {
   singleIssue(state: State) {
     return state.singleIssue;
   },
+
+  comments(state: State) {
+    return state.comments;
+  },
 } as GetterTree<State, any>;

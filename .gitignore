@@ -2,6 +2,7 @@
 node_modules/
 .vscode/
 dist/
+/theme
 npm-debug.log
 yarn-error.log
 .idea

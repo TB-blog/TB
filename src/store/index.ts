@@ -14,6 +14,7 @@ export function createStore(): Store<State> {
       issues: [],
       repos: [],
       singleIssue: [],
+      comments: [],
       maxPage: 0,
       user: {},
     },
@@ -27,6 +28,7 @@ export interface State {
   issues: object[];
   repos: object[];
   singleIssue: object;
+  comments: object[];
   maxPage: number;
   user: object;
   route?: any;

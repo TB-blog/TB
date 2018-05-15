@@ -1,4 +1,5 @@
 import {
+  fetchComments,
   fetchIssues,
   fetchIssuesAndUser,
   fetchReposAndUser,
@@ -23,5 +24,9 @@ export default {
 
   FETCH_SINGLEISSUE: ({ commit, state }: any, { issueNumber }: { issueNumber: number }) => {
     return fetchSingleIssue(issueNumber).then((data: any) => commit('SET_SINGLEISSUE', { data }));
+  },
+
+  FETCH_COMMENTS: ({ commit, state }: any, { issueNumber }: { issueNumber: number }) => {
+    return fetchComments(issueNumber).then((data: any) => commit('SET_COMMENTS', { data }));
   },
 } as ActionTree<State, any>;

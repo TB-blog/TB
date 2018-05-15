@@ -2,6 +2,7 @@ import { State } from './index';
 
 interface SetIssuesPayload { data: State['issues']; }
 interface SetSingleIssuesPayload { data: State['singleIssue']; }
+interface SetCommentsPayload { data: State['comments']; }
 interface SetIssuesAndUserPayload { data: any; }
 interface SetReposAndUserPayload { data: any; }
 
@@ -24,5 +25,9 @@ export default {
 
   SET_SINGLEISSUE: (state: State, { data }: SetSingleIssuesPayload) => {
     state.singleIssue = data;
+  },
+
+  SET_COMMENTS: (state: State, { data }: SetCommentsPayload) => {
+    state.comments = data.sort((a: any, b: any) => (b as any).id - (a as any).id);
   },
 };

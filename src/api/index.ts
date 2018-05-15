@@ -78,6 +78,32 @@ function fetchRepos() {
   });
 }
 
+export function fetchComments(issueNumber: number) {
+  const key = md5(`comments-${issueNumber}`);
+
+  return new Promise((resolve, reject) => {
+    if ((api as any).cached && (api as any).cached.has(key)) {
+      resolve((api as any).cached.get(key));
+    }
+
+    return axios({
+      method: 'get',
+      url: `${baseUrl}/repos/${_config.user}/${_config.repo}/issues/${issueNumber}/comments`,
+      params: {
+        access_token: (_config as any).token,
+      },
+    }).then(data => {
+      if ((api as any).cached) {
+        (api as any).cached.set(key, data.data);
+      }
+      resolve(data.data);
+    }).catch(data => {
+      console.log(data);
+      reject(data);
+    });
+  });
+}
+
 export function fetchIssues(page: number, size: number) {
   const key = md5(`issues-${page}`);
 

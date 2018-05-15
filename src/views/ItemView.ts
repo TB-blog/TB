@@ -28,7 +28,13 @@ export default class ItemView extends Vue {
     + (this as any).$_config.repo
     + '/issues?q=is%3Aissue+is%3Aopen+label%3A';
   }
-  get htmlResource() {
+  get comments() {
+    return this.$store.getters.comments.map((el: any) => {
+      el.body = marked(el.body);
+      return el;
+    });
+  }
+  get articleResource() {
     return marked(this.item.body);
   }
   get item() {
@@ -41,25 +47,9 @@ export default class ItemView extends Vue {
   }
 
   public initComments() {
-    if (process.browser && (this as any).$_config.gitalk.useGitalk) {
-      const gitalk = require('gitalk');
-      const comment = new gitalk({
-        clientID: (this as any).$_config.gitalk.clientID,
-        clientSecret: (this as any).$_config.gitalk.clientSecret,
-        repo: (this as any).$_config.gitalk.repo,
-        owner: (this as any).$_config.gitalk.owner,
-        admin: (this as any).$_config.gitalk.admin,
-        id: this.$route.fullPath,
-        labels: ['comments'],
-        distractionFreeMode: true,
-        language: 'en',
-      });
-      return comment.render('item-view-comments');
-    }
-    return;
+    this.$store.dispatch('FETCH_COMMENTS', { issueNumber: [this.$route.params.id] });
   }
   public mounted() {
-    hljs.initHighlightingOnLoad();
     this.initComments();
   }
 }
