@@ -3,10 +3,14 @@ import * as md5 from 'md5';
 import _config from '../../config.json';
 import api from './config-api-server';
 
+const baseUrl = 'https://api.github.com';
+
 axios.defaults.timeout = 3000;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
-const baseUrl = 'https://api.github.com';
+if ((api as any).onServer) {
+  warmCache();
+}
 
 function findMaxPage(curPage: number, linkStr: string) {
   const arr = linkStr.split('page=').filter(el => {
@@ -22,10 +26,6 @@ function warmCache() {
   fetchIssues(1, 10);
   fetchReposAndUser();
   setTimeout(warmCache, 1000 * 60 * 15);
-}
-
-if ((api as any).onServer) {
-  warmCache();
 }
 
 function fetchUser() {
@@ -66,6 +66,30 @@ function fetchRepos() {
         access_token: _config.token,
         sort: 'created',
         direction: 'desc',
+      },
+    }).then(data => {
+      if ((api as any).cached) {
+        (api as any).cached.set(key, data.data);
+      }
+      resolve(data.data);
+    }).catch(data => {
+      reject(data);
+    });
+  });
+}
+
+function fetchSingleIssue(issueNumber: number) {
+  const key = md5(`singleissue-${issueNumber}`);
+  return new Promise((resolve, reject) => {
+    if ((api as any).cached && (api as any).cached.has(key)) {
+      resolve((api as any).cached.get(key));
+    }
+
+    return axios({
+      method: 'get',
+      url: `${baseUrl}/repos/${(_config as any).user}/${(_config as any).repo}/issues/${issueNumber}`,
+      params: {
+        access_token: (_config as any).token,
       },
     }).then(data => {
       if ((api as any).cached) {
@@ -148,26 +172,6 @@ export function fetchReposAndUser() {
   return Promise.all([fetchRepos(), fetchUser()]);
 }
 
-export function fetchSingleIssue(issueNumber: number) {
-  const key = md5(`singleissue-${issueNumber}`);
-  return new Promise((resolve, reject) => {
-    if ((api as any).cached && (api as any).cached.has(key)) {
-      resolve((api as any).cached.get(key));
-    }
-
-    return axios({
-      method: 'get',
-      url: `${baseUrl}/repos/${(_config as any).user}/${(_config as any).repo}/issues/${issueNumber}`,
-      params: {
-        access_token: (_config as any).token,
-      },
-    }).then(data => {
-      if ((api as any).cached) {
-        (api as any).cached.set(key, data.data);
-      }
-      resolve(data.data);
-    }).catch(data => {
-      reject(data);
-    });
-  });
+export function fetchSingleIssueAndUser(issueNumber: number) {
+  return Promise.all([fetchSingleIssue(issueNumber), fetchUser()]);
 }

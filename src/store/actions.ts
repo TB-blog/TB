@@ -3,7 +3,7 @@ import {
   fetchIssues,
   fetchIssuesAndUser,
   fetchReposAndUser,
-  fetchSingleIssue,
+  fetchSingleIssueAndUser,
 } from '../api';
 
 import { ActionContext, ActionTree, Commit, Dispatch } from 'vuex';
@@ -22,8 +22,8 @@ export default {
     return fetchIssues(page, size).then((data: any) => commit('SET_ISSUES', { data }));
   },
 
-  FETCH_SINGLEISSUE: ({ commit, state }: any, { issueNumber }: { issueNumber: number }) => {
-    return fetchSingleIssue(issueNumber).then((data: any) => commit('SET_SINGLEISSUE', { data }));
+  FETCH_SINGLEISSUE_AND_USER: ({ commit, state }: any, { issueNumber }: { issueNumber: number }) => {
+    return fetchSingleIssueAndUser(issueNumber).then((data: any) => commit('SET_SINGLEISSUE_AND_USER', { data }));
   },
 
   FETCH_COMMENTS: ({ commit, state }: any, { issueNumber }: { issueNumber: number }) => {

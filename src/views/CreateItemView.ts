@@ -10,7 +10,7 @@ export default function createItemView(type: string) {
     name: `${type}-view`,
 
     asyncData({ store, route }: { store: Store<State>, route: Route }) {
-      return store.dispatch('FETCH_SINGLEISSUE', { issueNumber: [route.params.id] });
+      return store.dispatch('FETCH_SINGLEISSUE_AND_USER', { issueNumber: [route.params.id] });
     },
 
     title: camelize('article'),

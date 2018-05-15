@@ -1,10 +1,10 @@
 import { State } from './index';
 
 interface SetIssuesPayload { data: State['issues']; }
-interface SetSingleIssuesPayload { data: State['singleIssue']; }
 interface SetCommentsPayload { data: State['comments']; }
 interface SetIssuesAndUserPayload { data: any; }
 interface SetReposAndUserPayload { data: any; }
+interface SetSingleIssueAndUserPayload { data: any; }
 
 export default {
   SET_REPOS_AND_USER: (state: State, { data }: SetReposAndUserPayload) => {
@@ -23,8 +23,9 @@ export default {
     state.maxPage = (data as any).maxPage;
   },
 
-  SET_SINGLEISSUE: (state: State, { data }: SetSingleIssuesPayload) => {
-    state.singleIssue = data;
+  SET_SINGLEISSUE_AND_USER: (state: State, { data }: SetSingleIssueAndUserPayload) => {
+    state.singleIssue = data[0];
+    state.user = data[1];
   },
 
   SET_COMMENTS: (state: State, { data }: SetCommentsPayload) => {
